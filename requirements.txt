@@ -1,0 +1,15 @@
+# HTTP API framework for the AI service.
+fastapi>=0.115,<1.0
+# ASGI server used to run the local prototype.
+uvicorn[standard]>=0.30,<1.0
+# LangGraph state-machine workflows and LangChain tools.
+langgraph>=0.2,<2.0
+langchain-core>=0.3,<2.0
+# Groq model adapter; the API key is read from the environment.
+langchain-groq>=0.2,<1.0
+# Google Gemini model adapter; the API key is read from the environment.
+langchain-google-genai>=2.0,<5.0
+# Optional LangSmith tracing support; tracing remains disabled by default.
+langsmith>=0.1,<1.0
+# Load local .env settings during development.
+python-dotenv>=1.0,<2.0
