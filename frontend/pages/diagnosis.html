@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Triase Awal – RANAH CARE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    />
+    <link rel="stylesheet" href="../pages/css/reservasi.css" />
+    <link rel="stylesheet" href="../pages/css/diagnosis.css" />
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <a
+          class="logo"
+          href="dashboard.html"
+          aria-label="Ranah Care, ke dashboard"
+          ><img
+            src="../assets/1.png"
+            alt="Ranah Care"
+            width="250"
+            height="44"
+          />
+          <span>RANAH CARE</span></a
+        >
+
+        <nav aria-label="Menu utama">
+          <a href="dashboard.html">Dashboard</a
+          ><a href="resepsionis.html">Resepsionis</a
+          ><a href="diagnosis.html" aria-current="page">Triase Awal</a
+          ><a href="reservasi.html">Reservasi</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="top">
+        <div>
+          <h1>Triase Awal</h1>
+          <p>
+            Ringkasan keluhan dan arahan awal untuk membantu memilih layanan.
+            Ini bukan diagnosis dan wajib divalidasi tenaga medis.
+          </p>
+        </div>
+        <a class="more" href="resepsionis.html">← Kembali ke resepsionis</a>
+      </div>
+
+      <section class="card" aria-live="polite">
+        <ol class="steps" id="steps"></ol>
+        <div id="body"></div>
+      </section>
+
+      <aside>
+        <section class="card">
+          <h3>Gejala dari resepsionis</h3>
+          <div id="src"></div>
+        </section>
+        <section class="card">
+          <h3>Alur layanan</h3>
+          <ol class="flow">
+            <li>Ceritakan keluhan ke chatbot resepsionis.</li>
+            <li>Lengkapi gejala dan pertanyaan di halaman ini.</li>
+            <li>Lihat arahan awal dan tingkat urgensi yang perlu divalidasi.</li>
+            <li>Buat reservasi ke dokter yang sesuai.</li>
+            <li>Pantau jadwal di dashboard.</li>
+          </ol>
+        </section>
+        <section class="card emg">
+          <h3>Kondisi darurat</h3>
+          <p>
+            Nyeri dada, sesak napas berat, pingsan, kejang, atau muntah darah:
+            segera ke IGD terdekat atau hubungi 112.
+          </p>
+        </section>
+      </aside>
+
+      <section class="band">
+        <div class="pl">+</div>
+        <div class="tx">
+          <h3>Sudah yakin perlu bertemu dokter?</h3>
+          <p>Anda bisa langsung mengatur jadwal tanpa pemeriksaan awal.</p>
+        </div>
+        <a class="wbtn" href="reservasi.html">Buat reservasi →</a>
+      </section>
+    </main>
+
+    <script>
+      /* Gejala masuk dari chatbot resepsionis lewat dua cara:
+   1) localStorage "rc_gejala" = {"gejala":["demam","batuk"],"waktu":"ISO-8601"}
+   2) tautan diagnosis.html?gejala=demam,batuk */
+      var G = [
+        ["demam", "Demam"],
+        ["batuk", "Batuk"],
+        ["pilek", "Pilek"],
+        ["bersin", "Bersin-bersin"],
+        ["sakit_tenggorokan", "Sakit tenggorokan"],
+        ["sakit_kepala", "Sakit kepala"],
+        ["pusing", "Pusing"],
+        ["nyeri_otot", "Nyeri otot"],
+        ["lemas", "Lemas"],
+        ["mual", "Mual"],
+        ["muntah", "Muntah"],
+        ["diare", "Diare"],
+        ["nyeri_perut", "Nyeri perut"],
+        ["nyeri_ulu_hati", "Nyeri ulu hati"],
+        ["ruam", "Ruam kulit"],
+        ["mata_gatal", "Mata gatal"],
+        ["nyeri_belakang_mata", "Nyeri di belakang mata"],
+        ["sesak_napas", "Sesak napas"],
+        ["nyeri_dada", "Nyeri dada"],
+        ["muntah_darah", "Muntah darah"],
+        ["kejang_pingsan", "Kejang atau pingsan"],
+      ];
+      var RED = ["nyeri_dada", "muntah_darah", "kejang_pingsan"];
+      var S = {
+        step: 1,
+        g: [],
+        unk: [],
+        sumber: "",
+        bot: false,
+        dur: "",
+        kep: "",
+        hamil: false,
+        kronis: false,
+        anak: false,
+        err: "",
+      };
+      var NM = ["Gejala", "Pertanyaan lanjutan", "Hasil"];
+      function $(i) {
+        return document.getElementById(i);
+      }
+      function esc(s) {
+        var d = document.createElement("div");
+        d.textContent = s;
+        return d.innerHTML;
+      }
+      function norm(s) {
+        return s.toLowerCase().trim().replace(/\s+/g, "_");
+      }
+      function lb(id) {
+        return G.filter(function (g) {
+          return g[0] === id;
+        })[0][1];
+      }
+      function parse(l) {
+        var ok = [],
+          un = [];
+        l.forEach(function (x) {
+          var k = norm(String(x)),
+            f = G.filter(function (g) {
+              return g[0] === k || norm(g[1]) === k;
+            })[0];
+          if (f) {
+            if (ok.indexOf(f[0]) < 0) ok.push(f[0]);
+          } else if (k) un.push(String(x));
+        });
+        return { ok: ok, un: un };
+      }
+      function load() {
+        var l = [],
+          src = "";
+        try {
+          var q = new URLSearchParams(location.search).get("gejala");
+          if (q) {
+            l = q.split(",");
+            src = "Resepsionis";
+          }
+        } catch (e) {}
+        if (!l.length) {
+          try {
+            var d = JSON.parse(localStorage.getItem("rc_gejala") || "null");
+            if (d && d.gejala && d.gejala.length) {
+              l = d.gejala;
+              src =
+                "Chatbot resepsionis" +
+                (d.waktu
+                  ? ", " +
+                    new Date(d.waktu).toLocaleString("id-ID", {
+                      dateStyle: "medium",
+                      timeStyle: "short",
+                    })
+                  : "");
+            }
+          } catch (e) {}
+        }
+        var r = parse(l);
+        S.g = r.ok;
+        S.unk = r.un;
+        S.sumber = src;
+        S.bot = r.ok.length > 0;
+      }
+      function stepsUI() {
+        $("steps").innerHTML = NM.map(function (n, i) {
+          var c = i + 1 === S.step ? "on" : i + 1 < S.step ? "done" : "";
+          return (
+            '<li class="' +
+            c +
+            '"><b>' +
+            (i + 1 < S.step ? "✓" : i + 1) +
+            "</b>" +
+            n +
+            "</li>"
+          );
+        }).join("");
+      }
+      function opt(k, a) {
+        return a
+          .map(function (o) {
+            return (
+              '<button type="button" class="chip" data-k="' +
+              k +
+              '" data-v="' +
+              o[0] +
+              '" aria-pressed="' +
+              (S[k] === o[0]) +
+              '">' +
+              o[1] +
+              "</button>"
+            );
+          })
+          .join("");
+      }
+      function ck(id, t) {
+        return (
+          '<label class="ck"><input type="checkbox" id="' +
+          id +
+          '"' +
+          (S[id] ? " checked" : "") +
+          "> " +
+          t +
+          "</label>"
+        );
+      }
+
+      function triageLevel() {
+        var g = S.g,
+          has = function (x) {
+            return g.indexOf(x) > -1;
+          };
+        var red =
+          g.some(function (x) {
+            return RED.indexOf(x) > -1;
+          }) ||
+          (has("sesak_napas") && S.kep !== "ringan");
+        var risk = S.hamil || S.kronis || S.anak,
+          lv = 1;
+        if (red) lv = 3;
+        else {
+          if (S.kep === "berat") lv = 2;
+          if (S.dur === "lama" && S.kep !== "ringan") lv = 2;
+          if (risk && S.kep !== "ringan") lv = 2;
+        }
+        return { lv: lv, sv: risk ? "spesialis" : "umum" };
+      }
+
+      function result() {
+        var a = triageLevel(),
+          ur = {
+            3: [
+              "Cari pertolongan segera",
+              "Pilihan Anda memuat tanda yang perlu dinilai segera. Hubungi layanan darurat setempat atau datangi IGD terdekat; jangan menunggu chatbot.",
+            ],
+            2: [
+              "Hubungi tenaga medis hari ini",
+              "Kondisi yang Anda laporkan perlu dibicarakan dengan tenaga medis untuk menentukan langkah berikutnya.",
+            ],
+            1: [
+              "Pertimbangkan janji rutin",
+              "Tidak ada tanda bahaya yang terdeteksi otomatis dari pilihan ini. Jika kondisi memburuk atau terasa mengkhawatirkan, cari bantuan medis segera.",
+            ],
+          }[a.lv];
+        var h =
+          '<div class="urg r' +
+          a.lv +
+          '"><h3>' +
+          ur[0] +
+          "</h3><p>" +
+          ur[1] +
+          "</p></div>";
+        h +=
+          '<h2>Ringkasan arahan awal</h2><p class="sub">Gejala yang Anda pilih: ' +
+          S.g.map(lb).join(", ").toLowerCase() +
+          ".</p><div class=\"cond\"><p>Arahan poli untuk ditinjau tenaga medis: " +
+          (a.sv === "spesialis" ? "dokter spesialis" : "dokter umum") +
+          ".</p></div>";
+        h +=
+          '<p class="note">Ini bukan diagnosis, prediksi penyakit, atau kepastian bahwa kondisi aman. Rekomendasi perlu divalidasi tenaga medis.</p>';
+        var kel =
+          "Gejala: " +
+          S.g.map(lb).join(", ").toLowerCase() +
+          ". Durasi " +
+          {
+            baru: "kurang dari 1 hari",
+            sedang: "1–3 hari",
+            lama: "lebih dari 3 hari",
+          }[S.dur] +
+          ", keparahan " +
+          S.kep +
+          ".";
+        var u = function (sv) {
+          return (
+            "reservasi.html?layanan=" +
+            sv +
+            "&keluhan=" +
+            encodeURIComponent(kel)
+          );
+        };
+        h +=
+          '<div class="act rs"><button type="button" class="btn ghost" id="back">Ubah jawaban</button>';
+        if (a.lv < 3) {
+          h +=
+            '<span class="grp">' +
+            '<a class="btn" href="' +
+            u(a.sv) +
+            '">Buat reservasi</a></span>';
+        } else
+          h += '<a class="btn" href="dashboard.html">Kembali ke dashboard</a>';
+        h += "</div>";
+        try {
+          localStorage.setItem(
+            "rc_diagnosis",
+            JSON.stringify({
+              gejala: S.g,
+              rekomendasi: a.sv,
+              urgensi: ur[0],
+              waktu: new Date().toISOString(),
+            }),
+          );
+        } catch (e) {}
+        return h;
+      }
+
+      function draw() {
+        stepsUI();
+        var h = "";
+        if (S.step === 1) {
+          h =
+            '<h2>Gejala Anda</h2><p class="sub">' +
+            (S.bot
+              ? "Gejala ini dikirim chatbot resepsionis. Hapus yang keliru atau tambahkan yang kurang."
+              : "Belum ada gejala dari resepsionis. Pilih gejala yang Anda rasakan.") +
+            '</p><div class="chips">' +
+            G.map(function (x) {
+              return (
+                '<button type="button" class="chip" data-g="' +
+                x[0] +
+                '" aria-pressed="' +
+                (S.g.indexOf(x[0]) > -1) +
+                '">' +
+                x[1] +
+                "</button>"
+              );
+            }).join("") +
+            "</div>" +
+            (S.bot
+              ? ""
+              : '<p class="note">Belum bercerita ke chatbot? <button type="button" class="lnk2" id="demo">Coba dengan contoh gejala</button></p>');
+        }
+        if (S.step === 2) {
+          h =
+            '<h2>Pertanyaan lanjutan</h2><p class="sub">Tiga pertanyaan singkat agar hasilnya lebih tepat.</p><span class="lbl">Sudah berapa lama gejala dirasakan?</span><div class="chips">' +
+            opt("dur", [
+              ["baru", "Kurang dari 1 hari"],
+              ["sedang", "1–3 hari"],
+              ["lama", "Lebih dari 3 hari"],
+            ]) +
+            '</div><span class="lbl">Seberapa mengganggu?</span><div class="chips">' +
+            opt("kep", [
+              ["ringan", "Ringan, masih bisa beraktivitas"],
+              ["sedang", "Sedang, aktivitas terganggu"],
+              ["berat", "Berat, sulit beraktivitas"],
+            ]) +
+            '</div><span class="lbl">Kondisi khusus (boleh dikosongkan)</span><div class="cks">' +
+            ck("hamil", "Sedang hamil atau menyusui") +
+            ck(
+              "kronis",
+              "Punya penyakit kronis, misalnya diabetes, jantung, atau asma",
+            ) +
+            ck(
+              "anak",
+              "Pasien anak di bawah 5 tahun atau lansia di atas 65 tahun",
+            ) +
+            "</div>";
+        }
+        if (S.step === 3) h = result();
+        else
+          h +=
+            '<div class="err" id="err" role="alert">' +
+            S.err +
+            '</div><div class="act"><button type="button" class="btn ghost" id="back"' +
+            (S.step === 1 ? ' style="visibility:hidden"' : "") +
+            '>Kembali</button><button type="button" class="btn" id="next">' +
+            (S.step === 2 ? "Lihat hasil" : "Lanjut") +
+            "</button></div>";
+        $("body").innerHTML = h;
+        side();
+        bind();
+      }
+
+      function bind() {
+        var q = function (s, f) {
+          Array.prototype.forEach.call(document.querySelectorAll(s), f);
+        };
+        q("[data-g]", function (b) {
+          b.onclick = function () {
+            var i = S.g.indexOf(b.dataset.g);
+            if (i < 0) S.g.push(b.dataset.g);
+            else S.g.splice(i, 1);
+            S.err = "";
+            draw();
+          };
+        });
+        q("[data-k]", function (b) {
+          b.onclick = function () {
+            S[b.dataset.k] = b.dataset.v;
+            S.err = "";
+            draw();
+          };
+        });
+        ["hamil", "kronis", "anak"].forEach(function (i) {
+          var e = $(i);
+          if (e)
+            e.onchange = function () {
+              S[i] = e.checked;
+            };
+        });
+        if ($("demo"))
+          $("demo").onclick = function () {
+            S.g = ["demam", "batuk", "pilek"];
+            S.bot = true;
+            S.sumber = "Contoh gejala";
+            draw();
+          };
+        if ($("back"))
+          $("back").onclick = function () {
+            S.err = "";
+            S.step--;
+            draw();
+            window.scrollTo(0, 0);
+          };
+        if ($("next"))
+          $("next").onclick = function () {
+            var e = "";
+            if (S.step === 1 && !S.g.length) e = "Pilih minimal satu gejala.";
+            if (S.step === 2 && !(S.dur && S.kep))
+              e = !S.dur
+                ? "Pilih sudah berapa lama gejala dirasakan."
+                : "Pilih seberapa mengganggu gejalanya.";
+            if (e) {
+              S.err = e;
+              draw();
+              return;
+            }
+            S.err = "";
+            S.step++;
+            draw();
+            window.scrollTo(0, 0);
+          };
+      }
+
+      function side() {
+        $("src").innerHTML = S.bot
+          ? '<p class="empty" style="margin:0">Sumber: ' +
+            esc(S.sumber) +
+            '</p><div class="srcl">' +
+            S.g
+              .map(function (x) {
+                return '<span class="tag">' + lb(x) + "</span>";
+              })
+              .join("") +
+            "</div>" +
+            (S.unk.length
+              ? '<p class="note" style="margin:8px 0 0">Belum dikenali: ' +
+                esc(S.unk.join(", ")) +
+                ". Tambahkan manual di kiri.</p>"
+              : "")
+          : '<p class="empty" style="margin:0 0 12px">Belum ada gejala masuk. Ceritakan keluhan Anda ke chatbot resepsionis.</p><a class="btn ghost" href="resepsionis.html">Buka resepsionis</a>';
+      }
+      load();
+      draw();
+    </script>
+  </body>
+</html>

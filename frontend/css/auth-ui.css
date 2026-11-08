@@ -1,0 +1,57 @@
+/* =========================================================
+   RANAHCARE - AUTH UI
+   File: css/auth-ui.css
+
+   Tampilan avatar/logo profil berdasarkan role akun yang
+   sedang login: pasien, dokter, atau admin.
+========================================================= */
+
+/* Avatar berisi inisial nama akun */
+.profile-avatar {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Warna avatar sesuai jenis akun */
+.profile-avatar.role-pasien {
+  background: #e3f4ee;
+  color: #0f766e;
+}
+
+.profile-avatar.role-dokter {
+  background: #e6efff;
+  color: #1d4ed8;
+}
+
+.profile-avatar.role-admin {
+  background: #fdf0dd;
+  color: #b45309;
+}
+
+/* Avatar kecil di tombol profil navbar dashboard */
+.main-navbar .profile-button .profile-avatar {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+
+  font-size: 10px;
+  letter-spacing: 0.3px;
+}
+
+/* Tombol profil dashboard sedikit lebih lebar untuk nama akun */
+.main-navbar .profile-button span {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

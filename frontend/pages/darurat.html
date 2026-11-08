@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="RANAHCARE - Pusat Informasi Layanan Darurat Kesehatan"
+    />
+
+    <title>Layanan Darurat | RANAHCARE</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../pages/css/darurat.css" />
+    <link rel="stylesheet" href="../css/auth-ui.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="navbar-left">
+        <a
+          href="dashboard.html"
+          class="back-button"
+          aria-label="Kembali ke dashboard"
+        >
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M19 12H5M12 19L5 12L12 5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+
+      <nav class="nav-menu" aria-label="Navigasi utama">
+        <a href="dashboard.html">Beranda</a>
+        <a href="pelayanan.html">Pelayanan</a>
+        <a href="darurat.html" class="active">Darurat</a>
+      </nav>
+
+      <!-- PROFILE -->
+      <div class="profile-wrapper">
+        <button class="profile-button" type="button" aria-expanded="false">
+          <div class="profile-avatar">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle
+                cx="12"
+                cy="8"
+                r="4"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+              <path
+                d="M4 21C4 17.686 7.582 15 12 15C16.418 15 20 17.686 20 21"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+
+          <div class="profile-info">
+            <strong>Pengguna</strong>
+            <span>Member RANAHCARE</span>
+          </div>
+
+          <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M7 10L12 15L17 10"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <div class="profile-dropdown">
+          <a href="profil.html">Profil Saya</a>
+          <a href="contact.html">Hubungi Kami</a>
+
+          <div class="dropdown-divider"></div>
+
+          <a href="index.html" class="logout-link" data-logout>Keluar</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="app-container">
+      <div class="main-content">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="sidebar-title">MENU UTAMA</div>
+
+          <nav class="sidebar-menu" aria-label="Menu halaman">
+            <a href="dashboard.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M3 10.5L12 3L21 10.5V20H14V14H10V20H3V10.5Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Beranda</span>
+            </a>
+
+            <a href="pelayanan.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="3"
+                    y="4"
+                    width="18"
+                    height="16"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M12 8V16M8 12H16"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Pelayanan Kesehatan</span>
+            </a>
+
+            <a href="darurat.html" class="sidebar-item active">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 7V13M12 16H12.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Layanan Darurat</span>
+            </a>
+
+            <a href="resepsionis.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M12 8V16M8 12H16"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Resepsionis AI</span>
+            </a>
+
+            <a href="riwayat.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M3 12A9 9 0 1 0 6 5.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M3 4V9H8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 7V12L15 14"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Riwayat</span>
+            </a>
+
+            <a href="antrean.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="8"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M4 21V19C4 17.3431 5.34315 16 7 16H17C18.6569 16 20 17.3431 20 19V21"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Antrean Puskesmas</span>
+            </a>
+
+            <a href="contact.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 5H20V17H8L4 21V5Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Hubungi Kami</span>
+            </a>
+          </nav>
+
+          <!-- SIDEBAR HELP -->
+          <div class="sidebar-bottom">
+            <div class="help-box">
+              <div class="help-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M9.5 9A2.5 2.5 0 1 1 13.5 11C12.5 11.7 12 12.2 12 13.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M12 17H12.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+
+              <strong>Butuh Bantuan?</strong>
+
+              <p>Hubungi tim RANAHCARE untuk informasi lebih lanjut.</p>
+
+              <a href="contact.html">Hubungi Kami</a>
+            </div>
+
+            <div class="sidebar-footer">© 2026 RANAHCARE</div>
+          </div>
+        </aside>
+
+        <!-- CONTENT -->
+        <section class="content">
+          <!-- PAGE HEADING -->
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                PUSAT BANTUAN DARURAT
+              </div>
+
+              <h1>Layanan Darurat</h1>
+
+              <p>
+                Informasi nomor penting dan akses bantuan dalam situasi darurat.
+              </p>
+            </div>
+
+            <div class="heading-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linejoin="round"
+                />
+
+                <path
+                  d="M12 7V13M12 16H12.01"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- EMERGENCY BANNER -->
+          <section class="emergency-banner">
+            <div class="emergency-banner-content">
+              <span class="emergency-badge"> INFORMASI DARURAT </span>
+
+              <h2>Butuh Bantuan Medis Segera?</h2>
+
+              <p>
+                Untuk keadaan darurat medis, hubungi layanan PSC 119. Sampaikan
+                lokasi dan kondisi yang dialami kepada operator.
+              </p>
+
+              <a href="tel:119" class="emergency-call-button">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M22 16.92V20A2 2 0 0 1 19.82 22C9.72 21.04 2.96 14.28 2 4.18A2 2 0 0 1 4 2H7.08A2 2 0 0 1 9.06 3.71L9.7 6.27A2 2 0 0 1 9.14 8.31L7.8 9.65A16 16 0 0 0 14.35 16.2L15.69 14.86A2 2 0 0 1 17.73 14.3L20.29 14.94A2 2 0 0 1 22 16.92Z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+                Hubungi 119
+              </a>
+
+              <span class="call-note">
+                Panggilan akan membuka aplikasi telepon perangkat Anda.
+              </span>
+            </div>
+
+            <div class="emergency-illustration">
+              <div class="illustration-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 7V15M8 11H16"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </section>
+
+          <!-- QUICK INFORMATION -->
+          <section class="quick-info">
+            <div class="quick-info-card">
+              <div class="quick-icon medical">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 3V21M3 12H21"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <span>Darurat Medis</span>
+                <strong>119</strong>
+                <small>PSC / Ambulans</small>
+              </div>
+            </div>
+
+            <div class="quick-info-card">
+              <div class="quick-icon general">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <span>Darurat Umum</span>
+                <strong>112</strong>
+                <small>Jika tersedia di wilayah Anda</small>
+              </div>
+            </div>
+
+            <div class="quick-info-card">
+              <div class="quick-icon police">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2L19 5V11C19 16 15 20 12 22C9 20 5 16 5 11V5L12 2Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <span>Kepolisian</span>
+                <strong>110</strong>
+                <small>Bantuan kepolisian</small>
+              </div>
+            </div>
+          </section>
+
+          <!-- SEARCH -->
+          <section class="search-section">
+            <div class="search-box">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="7"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+
+                <path
+                  d="M16 16L21 21"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="Cari layanan darurat..."
+                aria-label="Cari layanan darurat"
+              />
+            </div>
+
+            <span class="search-description">
+              Cari berdasarkan nama layanan atau nomor telepon.
+            </span>
+          </section>
+
+          <!-- CATEGORY -->
+          <section class="category-section">
+            <div class="section-heading">
+              <div>
+                <h2>Kategori Layanan</h2>
+                <p>Pilih kategori bantuan yang dibutuhkan.</p>
+              </div>
+            </div>
+
+            <div class="category-list">
+              <button
+                class="category-card active"
+                data-category="semua"
+                type="button"
+              >
+                <span class="category-icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <rect
+                      x="3"
+                      y="3"
+                      width="8"
+                      height="8"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                    <rect
+                      x="13"
+                      y="3"
+                      width="8"
+                      height="8"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                    <rect
+                      x="3"
+                      y="13"
+                      width="8"
+                      height="8"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                    <rect
+                      x="13"
+                      y="13"
+                      width="8"
+                      height="8"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                  </svg>
+                </span>
+
+                <span>Semua</span>
+              </button>
+
+              <button class="category-card" data-category="medis" type="button">
+                <span class="category-icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 3V21M3 12H21"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+
+                <span>Medis</span>
+              </button>
+
+              <button
+                class="category-card"
+                data-category="keamanan"
+                type="button"
+              >
+                <span class="category-icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                  </svg>
+                </span>
+
+                <span>Keamanan</span>
+              </button>
+
+              <button
+                class="category-card"
+                data-category="kebakaran"
+                type="button"
+              >
+                <span class="category-icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 22C7 22 4 18 4 14C4 10 7 7 9 4C9 7 11 8 12 9C13 6 15 4 16 2C17 7 20 10 20 14C20 18 17 22 12 22Z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+
+                <span>Kebakaran</span>
+              </button>
+
+              <button
+                class="category-card"
+                data-category="penyelamatan"
+                type="button"
+              >
+                <span class="category-icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 3V21M3 12H21M5.64 5.64L18.36 18.36M18.36 5.64L5.64 18.36"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+
+                <span>Penyelamatan</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- EMERGENCY CONTACTS -->
+          <section class="service-section">
+            <div class="section-heading">
+              <div>
+                <h2>Nomor Layanan Darurat</h2>
+                <p>Informasi kontak layanan bantuan penting.</p>
+              </div>
+
+              <span class="result-count">5 layanan ditemukan</span>
+            </div>
+
+            <div class="service-grid">
+              <!-- MEDIS -->
+              <article class="service-card" data-category="medis">
+                <div class="service-card-top">
+                  <div class="service-icon medical">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M12 3V21M3 12H21"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Layanan Medis</span>
+                </div>
+
+                <h3>PSC 119</h3>
+
+                <p class="service-description">
+                  Layanan cepat tanggap untuk keadaan darurat kesehatan dan
+                  kebutuhan bantuan ambulans.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>119</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="tel:119" class="call-button">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M22 16.92V20A2 2 0 0 1 19.82 22C9.72 21.04 2.96 14.28 2 4.18A2 2 0 0 1 4 2H7.08A2 2 0 0 1 9.06 3.71L9.7 6.27"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                    Hubungi
+                  </a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+
+              <!-- UMUM -->
+              <article class="service-card" data-category="keamanan">
+                <div class="service-card-top">
+                  <div class="service-icon general">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Darurat Umum</span>
+                </div>
+
+                <h3>Call Center 112</h3>
+
+                <p class="service-description">
+                  Nomor panggilan darurat terpadu untuk berbagai situasi darurat
+                  di daerah yang telah mengaktifkannya.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>112</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="tel:112" class="call-button">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M22 16.92V20A2 2 0 0 1 19.82 22C9.72 21.04 2.96 14.28 2 4.18A2 2 0 0 1 4 2H7.08"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                    Hubungi
+                  </a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+
+              <!-- POLISI -->
+              <article class="service-card" data-category="keamanan">
+                <div class="service-card-top">
+                  <div class="service-icon police">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M12 2L19 5V11C19 16 15 20 12 22C9 20 5 16 5 11V5L12 2Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Keamanan</span>
+                </div>
+
+                <h3>Kepolisian</h3>
+
+                <p class="service-description">
+                  Layanan kepolisian untuk melaporkan gangguan keamanan dan
+                  meminta bantuan petugas.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>110</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="tel:110" class="call-button">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M22 16.92V20A2 2 0 0 1 19.82 22C9.72 21.04 2.96 14.28 2 4.18A2 2 0 0 1 4 2H7.08"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                    Hubungi
+                  </a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+
+              <!-- DAMKAR -->
+              <article class="service-card" data-category="kebakaran">
+                <div class="service-card-top">
+                  <div class="service-icon fire">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M12 22C7 22 4 18 4 14C4 10 7 7 9 4C9 7 11 8 12 9C13 6 15 4 16 2C17 7 20 10 20 14C20 18 17 22 12 22Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Pemadam Kebakaran</span>
+                </div>
+
+                <h3>Pemadam Kebakaran</h3>
+
+                <p class="service-description">
+                  Layanan pemadam kebakaran dan penanganan kejadian kebakaran.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>113</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="tel:113" class="call-button">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M22 16.92V20A2 2 0 0 1 19.82 22C9.72 21.04 2.96 14.28 2 4.18A2 2 0 0 1 4 2H7.08"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                    Hubungi
+                  </a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+
+              <!-- BASARNAS -->
+              <article class="service-card" data-category="penyelamatan">
+                <div class="service-card-top">
+                  <div class="service-icon rescue">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M12 3V21M3 12H21M5.64 5.64L18.36 18.36M18.36 5.64L5.64 18.36"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Penyelamatan</span>
+                </div>
+
+                <h3>BASARNAS</h3>
+
+                <p class="service-description">
+                  Layanan pencarian dan pertolongan untuk kondisi yang
+                  membutuhkan operasi penyelamatan.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>115</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="tel:115" class="call-button">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M22 16.92V20A2 2 0 0 1 19.82 22C9.72 21.04 2.96 14.28 2 4.18A2 2 0 0 1 4 2H7.08"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                    Hubungi
+                  </a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div class="empty-state" hidden>
+              <div class="empty-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="7"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M16 16L21 21"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <h3>Layanan Tidak Ditemukan</h3>
+
+              <p>Coba kata kunci atau kategori yang berbeda.</p>
+            </div>
+          </section>
+
+          <!-- INFORMATION -->
+          <section class="safety-information">
+            <div class="safety-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+
+                <path
+                  d="M12 11V16M12 8H12.01"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+
+            <div>
+              <h3>Informasi Penting</h3>
+
+              <p>
+                Saat menghubungi layanan darurat, sampaikan lokasi kejadian,
+                jenis bantuan yang dibutuhkan, dan nomor yang dapat dihubungi.
+                Ikuti arahan operator. Gunakan nomor darurat hanya untuk
+                kejadian yang benar-benar membutuhkan bantuan.
+              </p>
+            </div>
+          </section>
+
+          <!-- FOOTER -->
+          <footer class="page-footer">
+            <p>
+              © 2026 <strong>RANAHCARE</strong>. Digital Healthcare Platform.
+            </p>
+
+            <span>Melayani dengan kepedulian.</span>
+          </footer>
+        </section>
+      </div>
+    </main>
+
+    <!-- MODAL DETAIL -->
+    <div class="modal-overlay" role="presentation">
+      <div
+        class="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button class="close-modal" type="button" aria-label="Tutup modal">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+
+        <div class="modal-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 3V21M3 12H21"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+
+        <span class="modal-category">Layanan Darurat</span>
+
+        <h2 id="modalTitle" class="modal-title">Informasi Layanan</h2>
+
+        <p class="modal-description">Informasi layanan darurat.</p>
+
+        <div class="modal-number">
+          <span>Nomor Telepon</span>
+          <strong>119</strong>
+        </div>
+
+        <a href="tel:119" class="modal-call-button"> Hubungi Layanan </a>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/auth-ui.js"></script>
+    <script src="../js/darurat.js"></script>
+  </body>
+</html>

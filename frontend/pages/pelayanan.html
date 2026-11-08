@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="RANAHCARE - Informasi Pelayanan dan Fasilitas Kesehatan"
+    />
+
+    <title>Pelayanan Kesehatan | RANAHCARE</title>
+
+    <!-- FONT PLUS JAKARTA SANS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS PELAYANAN -->
+    <link rel="stylesheet" href="../pages/css/pelayanan.css" />
+    <link rel="stylesheet" href="../css/auth-ui.css" />
+  </head>
+
+  <body>
+    <!-- =====================================
+         NAVBAR
+    ====================================== -->
+
+    <header class="navbar">
+      <div class="navbar-left">
+        <a
+          href="dashboard.html"
+          class="back-button"
+          aria-label="Kembali ke dashboard"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M19 12H5M12 19L5 12L12 5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+
+      <nav class="nav-menu" aria-label="Navigasi utama">
+        <a href="dashboard.html">Beranda</a>
+
+        <a href="pelayanan.html" class="active"> Pelayanan </a>
+
+        <a href="darurat.html">Darurat</a>
+      </nav>
+
+      <!-- PROFILE -->
+      <div class="profile-wrapper">
+        <button
+          class="profile-button"
+          type="button"
+          aria-expanded="false"
+          aria-label="Buka menu profil"
+        >
+          <div class="profile-avatar">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M20 21C20 17.6863 16.4183 15 12 15C7.58172 15 4 17.6863 4 21"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+
+              <circle
+                cx="12"
+                cy="8"
+                r="4"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+            </svg>
+          </div>
+
+          <div class="profile-info">
+            <strong>Pengguna</strong>
+            <span>Member RANAHCARE</span>
+          </div>
+
+          <svg
+            class="dropdown-arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M7 10L12 15L17 10"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <div class="profile-dropdown">
+          <a href="profil.html">Profil Saya</a>
+
+          <a href="contact.html">Hubungi Kami</a>
+
+          <div class="dropdown-divider"></div>
+
+          <a href="index.html" class="logout-link" data-logout>Keluar</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+
+    <main class="app-container">
+      <div class="main-content">
+        <!-- =====================================
+                 SIDEBAR
+        ====================================== -->
+
+        <aside class="sidebar">
+          <div class="sidebar-title">MENU UTAMA</div>
+
+          <nav class="sidebar-menu" aria-label="Menu halaman">
+            <a href="dashboard.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 10.5L12 3L21 10.5V20H14V14H10V20H3V10.5Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Beranda</span>
+            </a>
+
+            <a href="pelayanan.html" class="sidebar-item active">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect
+                    x="3"
+                    y="4"
+                    width="18"
+                    height="16"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M12 8V16M8 12H16"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Pelayanan Kesehatan</span>
+            </a>
+
+            <a href="darurat.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 7V13M12 16H12.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Layanan Darurat</span>
+            </a>
+
+            <a href="resepsionis.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 3V5M12 19V21M3 12H5M19 12H21"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="7"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M9 12H15M12 9V15"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Resepsionis AI</span>
+            </a>
+
+            <a href="riwayat.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 12A9 9 0 1 0 6 5.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M3 4V9H8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 7V12L15 14"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Riwayat</span>
+            </a>
+
+            <a href="antrean.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle
+                    cx="12"
+                    cy="8"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M4 21V19C4 17.3431 5.34315 16 7 16H17C18.6569 16 20 17.3431 20 19V21"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Antrean Puskesmas</span>
+            </a>
+
+            <a href="contact.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M4 5H20V17H8L4 21V5Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M8 9H16M8 13H13"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Hubungi Kami</span>
+            </a>
+          </nav>
+
+          <!-- SIDEBAR BOTTOM -->
+
+          <div class="sidebar-bottom">
+            <div class="help-box">
+              <div class="help-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M9.5 9A2.5 2.5 0 1 1 13.5 11C12.5 11.7 12 12.2 12 13.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M12 17H12.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+
+              <strong>Butuh Bantuan?</strong>
+
+              <p>Kami siap membantu kebutuhan informasi kesehatan Anda.</p>
+
+              <a href="contact.html"> Hubungi Kami </a>
+            </div>
+
+            <div class="sidebar-footer">© 2026 RANAHCARE</div>
+          </div>
+        </aside>
+
+        <!-- =====================================
+                 CONTENT
+        ====================================== -->
+
+        <section class="content">
+          <!-- PAGE HEADING -->
+
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                LAYANAN KESEHATAN
+              </div>
+
+              <h1>Pelayanan Kesehatan</h1>
+
+              <p>
+                Temukan fasilitas kesehatan yang sesuai dengan kebutuhan Anda.
+              </p>
+            </div>
+
+            <div class="heading-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect
+                  x="4"
+                  y="4"
+                  width="16"
+                  height="17"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                />
+
+                <path
+                  d="M12 8V16M8 12H16"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+
+                <path
+                  d="M9 4V2H15V4"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- EMERGENCY BANNER -->
+
+          <section class="emergency-banner">
+            <div class="emergency-banner-content">
+              <span class="emergency-badge"> INFO KESEHATAN </span>
+
+              <h2>Butuh Bantuan Kesehatan?</h2>
+
+              <p>
+                Kunjungi fasilitas kesehatan terdekat atau hubungi layanan
+                darurat untuk penanganan segera.
+              </p>
+
+              <a href="tel:119" class="emergency-call-button">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M22 16.92V20A2 2 0 0 1 19.82 22C9.72 21.04 2.96 14.28 2 4.18A2 2 0 0 1 4 2H7.08A2 2 0 0 1 9.06 3.71L9.7 6.27"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+
+                Hubungi 119
+              </a>
+
+              <span class="call-note">
+                Panggilan akan membuka aplikasi telepon perangkat Anda.
+              </span>
+            </div>
+
+            <div class="emergency-illustration">
+              <div class="illustration-circle">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 3V21M3 12H21"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </section>
+
+          <!-- QUICK INFO -->
+
+          <section class="quick-info">
+            <div class="quick-info-card">
+              <div class="quick-icon medical">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 3V21M3 12H21"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <span>Rumah Sakit</span>
+                <strong>—</strong>
+                <small>Pelayanan Inap</small>
+              </div>
+            </div>
+
+            <div class="quick-info-card">
+              <div class="quick-icon general">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <span>Puskesmas</span>
+                <strong>—</strong>
+                <small>Pelayanan Dasar</small>
+              </div>
+            </div>
+
+            <div class="quick-info-card">
+              <div class="quick-icon clinic">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect
+                    x="4"
+                    y="4"
+                    width="16"
+                    height="17"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M12 8V16M8 12H16"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <span>Klinik</span>
+                <strong>—</strong>
+                <small>Pemeriksaan Umum</small>
+              </div>
+            </div>
+          </section>
+
+          <!-- SEARCH SECTION -->
+
+          <section class="search-section">
+            <div class="search-box">
+              <svg
+                class="search-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="7"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+
+                <path
+                  d="M16 16L21 21"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="Cari rumah sakit, klinik, puskesmas..."
+                aria-label="Cari fasilitas kesehatan"
+              />
+            </div>
+
+            <span class="search-description">
+              Cari berdasarkan nama, jenis, atau lokasi fasilitas.
+            </span>
+          </section>
+
+          <!-- CATEGORY SECTION -->
+
+          <section class="category-section">
+            <div class="section-heading">
+              <div>
+                <h2>Kategori Pelayanan</h2>
+
+                <p>Pilih jenis fasilitas kesehatan.</p>
+              </div>
+            </div>
+
+            <div class="category-list">
+              <!-- SEMUA -->
+
+              <button
+                class="category-card active"
+                type="button"
+                data-category="semua"
+              >
+                <span class="category-icon">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect
+                      x="3"
+                      y="3"
+                      width="8"
+                      height="8"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+
+                    <rect
+                      x="13"
+                      y="3"
+                      width="8"
+                      height="8"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+
+                    <rect
+                      x="3"
+                      y="13"
+                      width="8"
+                      height="8"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+
+                    <rect
+                      x="13"
+                      y="13"
+                      width="8"
+                      height="8"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                  </svg>
+                </span>
+
+                <span>Semua</span>
+              </button>
+
+              <!-- RUMAH SAKIT -->
+
+              <button
+                class="category-card"
+                type="button"
+                data-category="rumah-sakit"
+              >
+                <span class="category-icon">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M4 21V5H20V21"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+
+                    <path
+                      d="M9 21V16H15V21"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+
+                    <path
+                      d="M12 8V14M9 11H15"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+
+                <span>Rumah Sakit</span>
+              </button>
+
+              <!-- PUSKESMAS -->
+
+              <button
+                class="category-card"
+                type="button"
+                data-category="puskesmas"
+              >
+                <span class="category-icon">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M3 21H21M5 21V8L12 4L19 8V21"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+
+                    <path
+                      d="M12 9V16M8.5 12.5H15.5"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+
+                <span>Puskesmas</span>
+              </button>
+
+              <!-- KLINIK -->
+
+              <button
+                class="category-card"
+                type="button"
+                data-category="klinik"
+              >
+                <span class="category-icon">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect
+                      x="4"
+                      y="4"
+                      width="16"
+                      height="17"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+
+                    <path
+                      d="M12 8V16M8 12H16"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+
+                    <path
+                      d="M9 4V2H15V4"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+
+                <span>Klinik</span>
+              </button>
+
+              <!-- APOTEK -->
+
+              <button
+                class="category-card"
+                type="button"
+                data-category="apotek"
+              >
+                <span class="category-icon">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M10 3H14V9H10V3Z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+
+                    <path
+                      d="M10 9H14C17.3137 9 20 11.6863 20 15C20 18.3137 17.3137 21 14 21H10C6.68629 21 4 18.3137 4 15C4 11.6863 6.68629 9 10 9Z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+
+                    <path
+                      d="M12 12V18M9 15H15"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+
+                <span>Apotek</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- SERVICE SECTION -->
+
+          <section class="service-section">
+            <div class="section-heading">
+              <div>
+                <h2>Fasilitas Kesehatan</h2>
+
+                <p>Daftar fasilitas kesehatan yang tersedia.</p>
+              </div>
+
+              <span class="result-count">6 fasilitas ditemukan</span>
+            </div>
+
+            <div class="service-grid">
+              <!-- RUMAH SAKIT 1 -->
+
+              <article
+                class="service-card hospital"
+                data-category="rumah-sakit"
+                data-phone="#"
+                type="button"
+              >
+                <div class="service-card-top">
+                  <div class="service-icon medical">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M12 3V21M3 12H21"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Rumah Sakit</span>
+                </div>
+
+                <h3>Rumah Sakit Umum</h3>
+
+                <p class="service-description">
+                  Fasilitas pelayanan kesehatan umum dengan berbagai layanan
+                  pemeriksaan dan perawatan pasien.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>—</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="#" class="call-button">Hubungi</a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+
+              <!-- PUSKESMAS 1 -->
+
+              <article
+                class="service-card puskesmas"
+                data-category="puskesmas"
+                data-phone="#"
+                type="button"
+              >
+                <div class="service-card-top">
+                  <div class="service-icon general">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Puskesmas</span>
+                </div>
+
+                <h3>Puskesmas Padang</h3>
+
+                <p class="service-description">
+                  Pusat pelayanan kesehatan masyarakat untuk pemeriksaan dasar,
+                  konsultasi, dan pelayanan kesehatan keluarga.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>—</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="#" class="call-button">Hubungi</a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+
+              <!-- KLINIK 1 -->
+
+              <article
+                class="service-card clinic"
+                data-category="klinik"
+                data-phone="#"
+                type="button"
+              >
+                <div class="service-card-top">
+                  <div class="service-icon clinic">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <rect
+                        x="4"
+                        y="4"
+                        width="16"
+                        height="17"
+                        rx="2"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+
+                      <path
+                        d="M12 8V16M8 12H16"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Klinik</span>
+                </div>
+
+                <h3>Klinik Sehat</h3>
+
+                <p class="service-description">
+                  Klinik pelayanan kesehatan untuk konsultasi dokter,
+                  pemeriksaan kesehatan, dan layanan medis dasar.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>—</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="#" class="call-button">Hubungi</a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+
+              <!-- APOTEK 1 -->
+
+              <article
+                class="service-card pharmacy"
+                data-category="apotek"
+                data-phone="#"
+                type="button"
+              >
+                <div class="service-card-top">
+                  <div class="service-icon pharmacy">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M10 3H14V9H10V3Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"
+                      />
+
+                      <path
+                        d="M10 9H14C17.3137 9 20 11.6863 20 15C20 18.3137 17.3137 21 14 21H10C6.68629 21 4 18.3137 4 15C4 11.6863 6.68629 9 10 9Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+
+                      <path
+                        d="M12 12V18M9 15H15"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Apotek</span>
+                </div>
+
+                <h3>Apotek Sehat</h3>
+
+                <p class="service-description">
+                  Tempat pelayanan kefarmasian untuk memperoleh informasi dan
+                  obat sesuai ketentuan.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>—</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="#" class="call-button">Hubungi</a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+
+              <!-- RUMAH SAKIT 2 -->
+
+              <article
+                class="service-card hospital"
+                data-category="rumah-sakit"
+                data-phone="#"
+                type="button"
+              >
+                <div class="service-card-top">
+                  <div class="service-icon medical">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M12 3V21M3 12H21"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Rumah Sakit</span>
+                </div>
+
+                <h3>Rumah Sakit Daerah</h3>
+
+                <p class="service-description">
+                  Fasilitas kesehatan daerah untuk pelayanan medis, pemeriksaan,
+                  dan perawatan pasien.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>—</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="#" class="call-button">Hubungi</a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+
+              <!-- KLINIK 2 -->
+
+              <article
+                class="service-card clinic"
+                data-category="klinik"
+                data-phone="#"
+                type="button"
+              >
+                <div class="service-card-top">
+                  <div class="service-icon clinic">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <rect
+                        x="4"
+                        y="4"
+                        width="16"
+                        height="17"
+                        rx="2"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+
+                      <path
+                        d="M12 8V16M8 12H16"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <span class="service-status">Klinik</span>
+                </div>
+
+                <h3>Klinik Pratama</h3>
+
+                <p class="service-description">
+                  Pelayanan kesehatan tingkat pertama untuk pemeriksaan umum dan
+                  konsultasi kesehatan.
+                </p>
+
+                <div class="service-number">
+                  <span>Nomor Telepon</span>
+                  <strong>—</strong>
+                </div>
+
+                <div class="service-actions">
+                  <a href="#" class="call-button">Hubungi</a>
+
+                  <button class="detail-button" type="button">Detail</button>
+                </div>
+              </article>
+            </div>
+
+            <!-- EMPTY STATE -->
+
+            <div class="empty-state" hidden>
+              <div class="empty-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="7"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M16 16L21 21"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M8 11H14"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <h3>Fasilitas Tidak Ditemukan</h3>
+
+              <p>
+                Coba gunakan kata kunci lain atau pilih kategori yang berbeda.
+              </p>
+            </div>
+          </section>
+
+          <!-- INFORMATION -->
+
+          <section class="safety-information">
+            <div class="safety-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+
+                <path
+                  d="M12 11V16M12 8H12.01"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+
+            <div>
+              <h3>Informasi Penting</h3>
+
+              <p>
+                Pilih fasilitas kesehatan sesuai dengan kebutuhan medis Anda.
+                Untuk keadaan darurat, segera hubungi nomor 119 atau fasilitas
+                kesehatan terdekat. Ikuti petunjuk petugas kesehatan saat
+                melakukan pemeriksaan.
+              </p>
+            </div>
+          </section>
+
+          <!-- FOOTER -->
+
+          <footer class="page-footer">
+            <p>
+              © 2026 <strong>RANAHCARE</strong>. Digital Healthcare Platform.
+            </p>
+
+            <span>Melayani dengan kepedulian.</span>
+          </footer>
+        </section>
+      </div>
+    </main>
+
+    <!-- =====================================
+         MODAL DETAIL FASILITAS
+    ====================================== -->
+
+    <div class="modal-overlay" role="presentation">
+      <div
+        class="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button class="close-modal" type="button" aria-label="Tutup detail">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+
+        <div class="modal-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect
+              x="4"
+              y="4"
+              width="16"
+              height="17"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M12 8V16M8 12H16"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+
+        <span class="modal-category"> Rumah Sakit </span>
+
+        <h2 id="modalTitle" class="modal-title">Detail Fasilitas Kesehatan</h2>
+
+        <div class="modal-number">
+          <span>Nomor Telepon</span>
+          <strong id="modalNumber">—</strong>
+        </div>
+
+        <p class="modal-description">Informasi fasilitas kesehatan.</p>
+
+        <a href="#" class="modal-call-button" id="modalCallButton">
+          Hubungi Layanan
+        </a>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT PELAYANAN -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/auth-ui.js"></script>
+    <script src="../js/pelayanan.js"></script>
+  </body>
+</html>

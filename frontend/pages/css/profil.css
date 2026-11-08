@@ -1,0 +1,1081 @@
+/* =========================================================
+   RANAHCARE - LOGIN PAGE (DOKTER / PASIEN / ADMIN)
+   File: css/profil.css
+   Font: Plus Jakarta Sans
+========================================================= */
+
+/* =========================
+   1. ROOT & RESET
+========================= */
+
+:root {
+  --bg: #fafdfb;
+  --surface: #ffffff;
+  --ink: #12392f;
+  --muted: #6b7f79;
+  --brand: #0f766e;
+  --brand-dark: #0b5f58;
+  --accent: #e3f4ee;
+  --line: #e6eeeb;
+  --error: #b3392b;
+  --success: #0f766e;
+  --dark: #143c35;
+
+  --radius-lg: 28px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+
+  --shadow: 0 20px 60px rgba(18, 57, 47, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   2. MAIN LAYOUT
+========================= */
+
+.register-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  overflow: hidden;
+}
+
+/* =========================
+   3. LEFT INTRO SECTION
+========================= */
+
+.register-intro {
+  position: relative;
+  min-height: 100vh;
+  padding: 42px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(255, 255, 255, 0.95),
+      transparent 35%
+    ),
+    linear-gradient(145deg, #e8f8f1 0%, #d8f1e8 50%, #c9eae0 100%);
+}
+
+/* Decorative circles */
+
+.register-intro::before,
+.register-intro::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.register-intro::before {
+  width: 420px;
+  height: 420px;
+  right: -180px;
+  top: 12%;
+  border: 1px solid rgba(15, 118, 110, 0.12);
+}
+
+.register-intro::after {
+  width: 300px;
+  height: 300px;
+  right: -110px;
+  bottom: 5%;
+  background: rgba(255, 255, 255, 0.18);
+  filter: blur(2px);
+}
+
+/* =========================
+   4. LOGO
+========================= */
+
+.logo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 13px;
+}
+
+.logo span {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  color: var(--dark);
+}
+
+.logo small {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* =========================
+   5. INTRO CONTENT
+========================= */
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  max-width: 540px;
+  margin: 70px 0;
+  animation: fadeUp 0.8s ease both;
+}
+
+.intro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 16px;
+  margin-bottom: 27px;
+
+  border: 1px solid rgba(15, 118, 110, 0.13);
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--brand-dark);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a085;
+  box-shadow: 0 0 0 4px rgba(22, 160, 133, 0.12);
+}
+
+.intro-content h1 {
+  max-width: 500px;
+  font-size: clamp(35px, 4.2vw, 56px);
+  line-height: 1.2;
+  letter-spacing: -2.5px;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.intro-content h1 span {
+  color: var(--brand);
+}
+
+.intro-content > p {
+  max-width: 440px;
+  margin-top: 22px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #58746b;
+}
+
+/* =========================
+   6. INTRO FEATURES
+========================= */
+
+.intro-features {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  margin-top: 42px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.feature-icon {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--brand);
+
+  box-shadow: 0 5px 15px rgba(18, 57, 47, 0.04);
+}
+
+.feature-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.feature-item p {
+  font-size: 12px;
+  font-weight: 600;
+  color: #365b50;
+  line-height: 1.6;
+}
+
+/* =========================
+   7. INTRO FOOTER
+========================= */
+
+.intro-footer {
+  position: relative;
+  z-index: 2;
+  padding-top: 20px;
+  border-top: 1px solid rgba(15, 118, 110, 0.12);
+
+  font-size: 11px;
+  font-weight: 500;
+  color: #648077;
+}
+
+/* =========================
+   8. RIGHT REGISTER SECTION
+========================= */
+
+.register-section {
+  min-height: 100vh;
+  padding: 45px 7%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--bg);
+}
+
+.register-card {
+  width: 100%;
+  max-width: 510px;
+  padding: 42px;
+
+  background: var(--surface);
+  border: 1px solid rgba(230, 238, 235, 0.9);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow);
+
+  animation: fadeUp 0.7s ease both;
+}
+
+/* =========================
+   9. FORM HEADING
+========================= */
+
+.form-heading {
+  margin-bottom: 30px;
+}
+
+.heading-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+  background: var(--accent);
+  color: var(--brand);
+}
+
+.heading-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.form-eyebrow {
+  margin-bottom: 9px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.form-heading h2 {
+  font-size: 28px;
+  line-height: 1.3;
+  letter-spacing: -1px;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.form-heading > p {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* =========================
+   10. FORM GROUP
+========================= */
+
+#roleLoginForm,
+#registerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #294d42;
+}
+
+.form-group label span {
+  color: var(--error);
+}
+
+/* =========================
+   11. INPUT WRAPPER
+========================= */
+
+.input-wrapper {
+  min-height: 53px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 15px;
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #fbfdfc;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--brand);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.09);
+}
+
+.input-wrapper > svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  color: #8aa39a;
+  transition: color 0.25s ease;
+}
+
+.input-wrapper:focus-within > svg {
+  color: var(--brand);
+}
+
+.input-wrapper input {
+  width: 100%;
+  min-width: 0;
+  height: 51px;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.input-wrapper input::placeholder {
+  color: #a4b3ad;
+  font-weight: 400;
+}
+
+/* Remove default browser password decorations */
+
+.input-wrapper input::-ms-reveal,
+.input-wrapper input::-ms-clear {
+  display: none;
+}
+
+/* =========================
+   12. PASSWORD TOGGLE
+========================= */
+
+.toggle-password {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #8aa39a;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.toggle-password:hover {
+  color: var(--brand);
+  background: var(--accent);
+}
+
+.toggle-password:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.toggle-password svg {
+  width: 19px;
+  height: 19px;
+}
+
+/* =========================
+   13. INPUT HINT
+========================= */
+
+.input-hint {
+  font-size: 10px;
+  line-height: 1.6;
+  color: #94a69f;
+}
+
+/* =========================
+   14. TERMS CHECKBOX
+========================= */
+
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.terms input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.terms label {
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.terms label a {
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.terms label a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   14b. ROLE SELECTOR (LOGIN)
+========================= */
+
+.role-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.role-option {
+  min-height: 84px;
+  padding: 12px 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #fbfdfc;
+
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.role-option svg {
+  width: 22px;
+  height: 22px;
+}
+
+.role-option:hover {
+  border-color: rgba(15, 118, 110, 0.35);
+  background: #f2faf7;
+  color: var(--brand);
+}
+
+.role-option.active {
+  border-color: var(--brand);
+  background: var(--accent);
+  color: var(--brand-dark);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.09);
+}
+
+.role-option:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* =========================
+   14c. LOGIN OPTIONS
+========================= */
+
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: -2px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.remember input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.forgot-link {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brand);
+  transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+  color: var(--brand-dark);
+  text-decoration: underline;
+}
+
+/* =========================
+   15. FORM MESSAGE
+========================= */
+
+.form-message {
+  display: none;
+  padding: 12px 14px;
+
+  border-radius: 10px;
+  font-size: 11px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.form-message:not(:empty) {
+  display: block;
+}
+
+.form-message.success {
+  color: #08745e;
+  background: #e8f7f0;
+  border: 1px solid #c9ebdc;
+}
+
+.form-message.error {
+  color: #a83228;
+  background: #fff0ee;
+  border: 1px solid #f5d3cf;
+}
+
+/* =========================
+   16. REGISTER BUTTON
+========================= */
+
+.register-button {
+  position: relative;
+  width: 100%;
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-top: 2px;
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 13px;
+
+  background: linear-gradient(135deg, #0f766e, #0b665f);
+
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+
+  box-shadow: 0 8px 20px rgba(15, 118, 110, 0.19);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.register-button svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s ease;
+}
+
+.register-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #0b665f, #084f4a);
+  box-shadow: 0 12px 25px rgba(15, 118, 110, 0.25);
+}
+
+.register-button:hover svg {
+  transform: translateX(4px);
+}
+
+.register-button:active {
+  transform: translateY(0);
+}
+
+.register-button:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.25);
+  outline-offset: 4px;
+}
+
+.register-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =========================
+   17. FORM DIVIDER
+========================= */
+
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 25px 0;
+
+  color: #a0b0a9;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+}
+
+/* =========================
+   18. LOGIN LINK
+========================= */
+
+.login-link {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.login-link a {
+  margin-left: 4px;
+  color: var(--brand);
+  font-weight: 800;
+  transition: color 0.2s ease;
+}
+
+.login-link a:hover {
+  color: var(--brand-dark);
+  text-decoration: underline;
+}
+
+/* =========================
+   18b. DEMO ACCOUNTS
+========================= */
+
+.demo-accounts {
+  margin-top: 18px;
+  padding: 14px 16px;
+
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-sm);
+  background: #fbfdfc;
+}
+
+.demo-accounts > strong {
+  display: block;
+  margin-bottom: 10px;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.demo-accounts ul {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.demo-accounts li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 10px;
+  color: #58746b;
+}
+
+.demo-accounts code {
+  padding: 2px 6px;
+
+  border-radius: 5px;
+  background: #eef6f3;
+
+  font-family: inherit;
+  font-size: 10px;
+  color: #294d42;
+}
+
+.demo-role {
+  padding: 3px 8px;
+
+  border-radius: 50px;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.demo-role.role-pasien {
+  background: #e3f4ee;
+  color: #0f766e;
+}
+
+.demo-role.role-dokter {
+  background: #e6efff;
+  color: #1d4ed8;
+}
+
+.demo-role.role-admin {
+  background: #fdf0dd;
+  color: #b45309;
+}
+
+/* =========================
+   19. ANIMATION
+========================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   20. TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 1050px) {
+  .register-page {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+
+  .register-intro {
+    padding: 35px 7%;
+  }
+
+  .register-section {
+    padding: 35px 5%;
+  }
+
+  .register-card {
+    padding: 35px 30px;
+  }
+
+  .intro-content h1 {
+    font-size: 40px;
+  }
+}
+
+/* =========================
+   21. MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 760px) {
+  .register-page {
+    grid-template-columns: 1fr;
+  }
+
+  .register-intro {
+    min-height: auto;
+    padding: 28px 7% 35px;
+  }
+
+  .register-intro::before {
+    width: 250px;
+    height: 250px;
+    right: -120px;
+    top: 5%;
+  }
+
+  .register-intro::after {
+    width: 180px;
+    height: 180px;
+    right: -90px;
+    bottom: -50px;
+  }
+
+  .logo img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .logo span {
+    font-size: 18px;
+  }
+
+  .intro-content {
+    margin: 40px 0 15px;
+  }
+
+  .intro-badge {
+    margin-bottom: 18px;
+    padding: 8px 13px;
+    font-size: 10px;
+  }
+
+  .intro-content h1 {
+    max-width: 450px;
+    font-size: clamp(32px, 8vw, 43px);
+    letter-spacing: -1.8px;
+  }
+
+  .intro-content > p {
+    margin-top: 15px;
+    font-size: 12px;
+  }
+
+  .intro-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 25px;
+  }
+
+  .feature-item {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .feature-icon {
+    width: 37px;
+    height: 37px;
+    border-radius: 11px;
+  }
+
+  .feature-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .feature-item p {
+    font-size: 10px;
+  }
+
+  .intro-footer {
+    display: none;
+  }
+
+  .register-section {
+    min-height: auto;
+    padding: 35px 6% 50px;
+  }
+
+  .register-card {
+    max-width: 550px;
+    padding: 30px 25px;
+    border-radius: 22px;
+  }
+}
+
+/* =========================
+   22. SMALL MOBILE
+========================= */
+
+@media (max-width: 420px) {
+  .register-intro {
+    padding: 23px 6% 28px;
+  }
+
+  .intro-content {
+    margin-top: 32px;
+  }
+
+  .intro-content h1 {
+    font-size: 32px;
+  }
+
+  .intro-content > p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .intro-features {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .register-section {
+    padding: 25px 5% 40px;
+  }
+
+  .register-card {
+    padding: 26px 20px;
+    border-radius: 19px;
+  }
+
+  .form-heading {
+    margin-bottom: 25px;
+  }
+
+  .form-heading h2 {
+    font-size: 25px;
+  }
+
+  .input-wrapper {
+    min-height: 50px;
+    padding: 0 12px;
+  }
+
+  .input-wrapper input {
+    height: 48px;
+    font-size: 11px;
+  }
+
+  .register-button {
+    min-height: 51px;
+  }
+}
+
+/* =========================
+   23. REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

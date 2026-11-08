@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Reservasi – Ranah Care</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    />
+    <link rel="stylesheet" href="../pages/css/reservasi.css" />
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <a
+          class="logo"
+          href="dashboard.html"
+          aria-label="Ranah Care, ke dashboard"
+          ><img
+            src="../assets/1.png"
+            alt="Ranah Care"
+            width="250"
+            height="44"
+          />
+          <span>RANAH CARE</span></a
+        >
+        <nav aria-label="Menu utama">
+          <a href="dashboard.html">Dashboard</a
+          ><a href="resepsionis.html">Resepsionis</a
+          ><a href="diagnosis.html">Triase Awal</a
+          ><a href="#reservasi" aria-current="page">Reservasi</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="reservasi">
+      <div class="top">
+        <div>
+          <h1>Reservasi</h1>
+          <p>Atur jadwal kunjungan ke dokter dengan mudah dan terorganisir.</p>
+        </div>
+        <a class="more" href="dashboard.html">Kembali ke dashboard →</a>
+      </div>
+
+      <section class="card" aria-live="polite">
+        <ol class="steps" id="steps"></ol>
+        <div id="body"></div>
+      </section>
+
+      <aside>
+        <section class="card sum">
+          <h3>Ringkasan reservasi</h3>
+          <div id="sum"></div>
+        </section>
+        <section class="card">
+          <h3>Reservasi saya</h3>
+          <div id="list"></div>
+        </section>
+        <section class="card">
+          <h3>Sebelum datang</h3>
+          <ul class="tips">
+            <li>Tiba 15 menit sebelum jadwal.</li>
+            <li>Pembayaran dilakukan setelah layanan bersama dokter.</li>
+            <li>Bawa kartu identitas dan kartu BPJS atau asuransi.</li>
+            <li>Ubah atau batalkan jadwal paling lambat 3 jam sebelumnya.</li>
+          </ul>
+        </section>
+      </aside>
+      <section class="band">
+        <div class="pl">+</div>
+        <div class="tx">
+          <h3>Jadwal Anda tersimpan di Ranah Care</h3>
+          <p>Pantau dan kelola semua reservasi dari dashboard.</p>
+        </div>
+        <a class="wbtn" href="dashboard.html">Buka dashboard →</a>
+      </section>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script>
+      var SV = [
+        {
+          id: "umum",
+          n: "Konsultasi dokter umum",
+          d: "Keluhan ringan hingga sedang, surat keterangan sehat",
+          i: "🩺",
+        },
+        {
+          id: "spesialis",
+          n: "Dokter spesialis",
+          d: "Penyakit dalam, anak, dan lainnya",
+          i: "🫀",
+        },
+        {
+          id: "tele",
+          n: "Telekonsultasi",
+          d: "Konsultasi video dari rumah",
+          i: "💻",
+        },
+        {
+          id: "lab",
+          n: "Pemeriksaan laboratorium",
+          d: "Cek darah, gula darah, kolesterol",
+          i: "🧪",
+        },
+        {
+          id: "vaksin",
+          n: "Vaksinasi",
+          d: "Imunisasi dewasa dan anak",
+          i: "💉",
+        },
+      ];
+      var NM = [
+        "Pilih layanan",
+        "Dokter dan jadwal",
+        "Data pasien",
+        "Konfirmasi",
+      ];
+      var S = {
+        step: 1,
+        sv: null,
+        dr: null,
+        date: null,
+        time: null,
+        scheduleId: null,
+        slots: [],
+        slotsLoaded: false,
+        loadingSlots: false,
+        scheduleError: "",
+        nama: "",
+        hp: "",
+        untuk: "Diri sendiri",
+        jamin: "Umum",
+        keluhan: "",
+        err: "",
+        done: null,
+      };
+      var B = [];
+      try {
+        B = JSON.parse(localStorage.getItem("rc_bk") || "[]");
+      } catch (e) {
+        B = [];
+      }
+      function save() {
+        try {
+          localStorage.setItem("rc_bk", JSON.stringify(B));
+        } catch (e) {}
+      }
+      function $(i) {
+        return document.getElementById(i);
+      }
+      function esc(s) {
+        var d = document.createElement("div");
+        d.textContent = s;
+        return d.innerHTML;
+      }
+
+      function svc() {
+        return SV.filter(function (x) {
+          return x.id === S.sv;
+        })[0];
+      }
+      function fd(iso) {
+        return new Date(iso + "T00:00:00").toLocaleDateString("id-ID", {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+      }
+      function stepsUI() {
+        $("steps").innerHTML = NM.map(function (n, i) {
+          var c = i + 1 === S.step ? "on" : i + 1 < S.step ? "done" : "";
+          return (
+            '<li class="' +
+            c +
+            '"><b>' +
+            (i + 1 < S.step ? "✓" : i + 1) +
+            "</b>" +
+            n +
+            "</li>"
+          );
+        }).join("");
+      }
+
+      function draw() {
+        stepsUI();
+        var h = "";
+        if (S.done) {
+          h =
+            '<div class="ok"><div class="ck2">✓</div><h2>Reservasi berhasil</h2><p class="sub">Simpan kode ini dan nomor antrean Anda.</p><div class="code">' +
+            S.done.kode +
+            "</div><p>Nomor antrean: <strong>" +
+            S.done.antrean +
+            "</strong><br>" +
+            esc(S.done.sv) +
+            " bersama " +
+            esc(S.done.dr) +
+            "<br>" +
+            fd(S.done.date) +
+            ", pukul " +
+            S.done.time +
+            '</p><div class="act"><a class="btn" href="dashboard.html">Kembali ke dashboard</a><button class="btn ghost" id="again">Buat reservasi baru</button></div></div>';
+          $("body").innerHTML = h;
+          $("again").onclick = reset;
+          side();
+          return;
+        }
+        if (S.step === 1) {
+          h =
+            '<h2>Pilih layanan</h2><p class="sub">Layanan apa yang Anda butuhkan?</p><div class="grid">' +
+            SV.map(function (x, k) {
+              return (
+                '<button type="button" class="opt" data-sv="' +
+                x.id +
+                '" aria-pressed="' +
+                (S.sv === x.id) +
+                '"><span class="no">0' +
+                (k + 1) +
+                '</span><span class="ic">' +
+                x.i +
+                '</span><span class="t">' +
+                x.n +
+                '</span><span class="d">' +
+                x.d +
+                '</span><span class="go">' +
+                (S.sv === x.id ? "Terpilih ✓" : "Pilih layanan") +
+                "</span></button>"
+              );
+            }).join("") +
+            "</div>";
+        }
+        if (S.step === 2) {
+          if (!S.slotsLoaded && !S.loadingSlots) loadSlots();
+          if (S.loadingSlots) {
+            h = '<h2>Dokter dan jadwal</h2><p class="sub">Memuat jadwal dari layanan AI...</p>';
+          } else if (S.scheduleError) {
+            h =
+              '<h2>Jadwal belum tersedia</h2><p class="err" role="alert">' +
+              esc(S.scheduleError) +
+              '</p><button type="button" class="btn ghost" id="retrySlots">Coba lagi</button>';
+          } else if (!S.slots.length) {
+            h =
+              '<h2>Belum ada jadwal</h2><p class="sub">Tidak ada slot demo untuk layanan ini. Silakan pilih layanan lain atau hubungi petugas.</p>';
+          } else {
+            var doctors = [];
+            S.slots.forEach(function (slot) {
+              if (!doctors.some(function (doctor) { return doctor.name === slot.doctor_name; })) {
+                doctors.push({ name: slot.doctor_name, specialty: slot.specialty });
+              }
+            });
+            h =
+              '<h2>Dokter dan jadwal</h2><p class="sub">Ketersediaan dibaca langsung dari API jadwal.</p><div class="grid">' +
+              doctors.map(function (doctor) {
+                var name = doctor.name.replace(/^dr\. /, "").charAt(0);
+                return (
+                  '<button type="button" class="opt doc" data-dr="' +
+                  esc(doctor.name).replace(/"/g, "&quot;") +
+                  '" aria-pressed="' +
+                  (S.dr === doctor.name) +
+                  '"><span class="av">' +
+                  esc(name) +
+                  '</span><span><span class="t">' +
+                  esc(doctor.name) +
+                  '</span><span class="d" style="margin:0">' +
+                  esc(doctor.specialty) +
+                  "</span></span></button>"
+                );
+              }).join("") +
+              "</div>";
+            if (S.dr) {
+              var doctorSlots = S.slots.filter(function (slot) {
+                return slot.doctor_name === S.dr;
+              });
+              var dates = Array.from(new Set(doctorSlots.map(function (slot) {
+                return slot.starts_at.slice(0, 10);
+              })));
+              h +=
+                '<span class="lbl">Tanggal</span><div class="chips">' +
+                dates.map(function (iso) {
+                  return (
+                    '<button type="button" class="chip" data-dt="' +
+                    iso +
+                    '" aria-pressed="' +
+                    (S.date === iso) +
+                    '">' +
+                    new Date(iso + "T00:00:00").toLocaleDateString("id-ID", { weekday: "short" }) +
+                    "<small>" +
+                    new Date(iso + "T00:00:00").toLocaleDateString("id-ID", { day: "numeric", month: "short" }) +
+                    "</small></button>"
+                  );
+                }).join("") +
+                "</div>";
+              if (S.date) {
+                var dateSlots = doctorSlots.filter(function (slot) {
+                  return slot.starts_at.slice(0, 10) === S.date;
+                });
+                h +=
+                  '<span class="lbl">Jam</span><div class="chips">' +
+                  dateSlots.map(function (slot) {
+                    var time = slot.starts_at.slice(11, 16);
+                    return (
+                      '<button type="button" class="chip" data-slot="' +
+                      slot.id +
+                      '" aria-pressed="' +
+                      (S.scheduleId === slot.id) +
+                      '">' +
+                      time +
+                      " · sisa " +
+                      slot.available +
+                      "</button>"
+                    );
+                  }).join("") +
+                  "</div>";
+              }
+            }
+          }
+        }
+        if (S.step === 3) {
+          h =
+            '<h2>Data pasien</h2><p class="sub">Isi kontak yang diperlukan; jangan masukkan NIK.</p><div class="f">' +
+            '<label class="fl">Reservasi untuk<select id="untuk">' +
+            ["Diri sendiri", "Anggota keluarga"]
+              .map(function (o) {
+                return (
+                  "<option" +
+                  (S.untuk === o ? " selected" : "") +
+                  ">" +
+                  o +
+                  "</option>"
+                );
+              })
+              .join("") +
+            "</select></label>" +
+            '<label class="fl">Penjamin<select id="jamin">' +
+            ["Umum", "BPJS Kesehatan", "Asuransi swasta"]
+              .map(function (o) {
+                return (
+                  "<option" +
+                  (S.jamin === o ? " selected" : "") +
+                  ">" +
+                  o +
+                  "</option>"
+                );
+              })
+              .join("") +
+            "</select></label>" +
+            '<label class="fl">Nama lengkap pasien<input type="text" id="nama" autocomplete="name" value="' +
+            esc(S.nama).replace(/"/g, "&quot;") +
+            '"></label>' +
+            '<label class="fl">Nomor WhatsApp<input type="tel" id="hp" inputmode="tel" placeholder="08xxxxxxxxxx" value="' +
+            esc(S.hp).replace(/"/g, "&quot;") +
+            '"></label>' +
+            '<label class="fl w">Keluhan atau tujuan kunjungan<textarea id="kel">' +
+            esc(S.keluhan) +
+            "</textarea></label>" +
+            '<p class="note w">Pengingat WhatsApp/SMS belum terhubung pada prototipe.</p></div>';
+        }
+        if (S.step === 4) {
+          var v = svc();
+          h =
+            '<h2>Periksa dan konfirmasi</h2><p class="sub">Pastikan semua data sudah benar.</p><div class="sum"><dl><dt>Layanan</dt><dd>' +
+            v.n +
+            "</dd><dt>Dokter</dt><dd>" +
+            S.dr +
+            "</dd><dt>Jadwal</dt><dd>" +
+            fd(S.date) +
+            ", " +
+            S.time +
+            "</dd><dt>Pasien</dt><dd>" +
+            esc(S.nama) +
+            " (" +
+            S.untuk +
+            ")</dd><dt>WhatsApp</dt><dd>" +
+            esc(S.hp) +
+            "</dd><dt>Penjamin</dt><dd>" +
+            S.jamin +
+            "</dd><dt>Keluhan</dt><dd>" +
+            esc(S.keluhan || "-") +
+            '</dd></dl><p class="empty" style="margin:12px 0 0">Pembayaran dilakukan setelah layanan bersama dokter. Reservasi ini hanya untuk mengatur jadwal.</p></div>';
+        }
+        h +=
+          '<div class="err" id="err" role="alert">' +
+          S.err +
+          '</div><div class="act"><button type="button" class="btn ghost" id="back"' +
+          (S.step === 1 ? ' style="visibility:hidden"' : "") +
+          '>Kembali</button><button type="button" class="btn" id="next">' +
+          (S.step === 4 ? "Konfirmasi reservasi" : "Lanjut") +
+          "</button></div>";
+        $("body").innerHTML = h;
+        side();
+        bind();
+      }
+
+      function bind() {
+        var q = function (s, f) {
+          Array.prototype.forEach.call(document.querySelectorAll(s), f);
+        };
+        q("[data-sv]", function (b) {
+          b.onclick = function () {
+            if (S.sv !== b.dataset.sv) {
+              S.sv = b.dataset.sv;
+              S.dr = S.date = S.time = null;
+              S.scheduleId = null;
+              S.slots = [];
+              S.slotsLoaded = false;
+              S.scheduleError = "";
+            }
+            S.err = "";
+            draw();
+          };
+        });
+        q("[data-dr]", function (b) {
+          b.onclick = function () {
+            if (S.dr !== b.dataset.dr) {
+              S.dr = b.dataset.dr;
+              S.date = S.time = null;
+              S.scheduleId = null;
+            }
+            S.err = "";
+            draw();
+          };
+        });
+        q("[data-dt]", function (b) {
+          b.onclick = function () {
+            S.date = b.dataset.dt;
+            S.time = null;
+            S.scheduleId = null;
+            S.err = "";
+            draw();
+          };
+        });
+        q("[data-slot]", function (b) {
+          b.onclick = function () {
+            var slot = S.slots.filter(function (item) {
+              return item.id === +b.dataset.slot;
+            })[0];
+            if (!slot) return;
+            S.scheduleId = slot.id;
+            S.date = slot.starts_at.slice(0, 10);
+            S.time = slot.starts_at.slice(11, 16);
+            S.err = "";
+            draw();
+          };
+        });
+        if ($("retrySlots"))
+          $("retrySlots").onclick = function () {
+            S.slotsLoaded = false;
+            S.scheduleError = "";
+            draw();
+          };
+        if (S.step === 3) {
+          ["untuk", "jamin", "nama", "hp", "kel"].forEach(function (i) {
+            $(i).oninput = $(i).onchange = function () {
+              S.untuk = $("untuk").value;
+              S.jamin = $("jamin").value;
+              S.nama = $("nama").value;
+              S.hp = $("hp").value;
+              S.keluhan = $("kel").value;
+              side();
+            };
+          });
+        }
+        $("back").onclick = function () {
+          S.err = "";
+          S.step--;
+          draw();
+        };
+        $("next").onclick = next;
+      }
+
+      function loadSlots() {
+        S.loadingSlots = true;
+        fetch(
+          AI_SERVICE_BASE_URL +
+            "/schedules?service=" +
+            encodeURIComponent(S.sv) +
+            "&limit=500",
+        )
+          .then(function (response) {
+            return response.json().then(function (body) {
+              if (!response.ok) throw new Error(body.detail || "Gagal memuat jadwal.");
+              return body;
+            });
+          })
+          .then(function (body) {
+            S.slots = body.items;
+            S.slotsLoaded = true;
+          })
+          .catch(function (error) {
+            console.error("Jadwal API gagal:", error);
+            S.scheduleError =
+              "Tidak dapat menghubungi API jadwal. Pastikan ai_service berjalan.";
+          })
+          .finally(function () {
+            S.loadingSlots = false;
+            draw();
+          });
+      }
+
+      async function next() {
+        var e = "";
+        if (S.step === 1 && !S.sv) e = "Pilih satu layanan untuk melanjutkan.";
+        if (S.step === 2 && !(S.dr && S.date && S.time && S.scheduleId))
+          e = !S.dr
+            ? "Pilih dokter terlebih dahulu."
+            : !S.date
+              ? "Pilih tanggal kunjungan."
+              : "Pilih jam kunjungan.";
+        if (S.step === 3) {
+          if (S.nama.trim().length < 3) e = "Isi nama lengkap pasien.";
+          else if (!/^(\+62|62|0)8\d{7,12}$/.test(S.hp.replace(/[\s-]/g, "")))
+            e = "Nomor WhatsApp belum sesuai. Contoh: 081234567890.";
+        }
+        if (e) {
+          S.err = e;
+          draw();
+          return;
+        }
+        S.err = "";
+        if (S.step < 4) {
+          S.step++;
+          draw();
+          return;
+        }
+        var v = svc();
+        $("next").disabled = true;
+        $("next").textContent = "Memproses...";
+        var response;
+        try {
+          response = await fetch(AI_SERVICE_BASE_URL + "/reservations", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              schedule_id: S.scheduleId,
+              service: S.sv,
+              starts_at: S.date + "T" + S.time,
+              patient_name: S.nama.trim(),
+              phone: S.hp,
+              coverage: S.jamin,
+              complaint: S.keluhan,
+            }),
+          });
+        } catch (error) {
+          S.err = "API reservasi tidak dapat dihubungi. Periksa layanan lalu coba lagi.";
+          draw();
+          return;
+        }
+        var result = await response.json();
+        if (!response.ok) {
+          S.err = result.detail || "Reservasi gagal. Silakan periksa jadwal dan data.";
+          draw();
+          return;
+        }
+        var booking = result.reservation;
+        var b = {
+          kode: booking.booking_code,
+          sv: v.n,
+          dr: booking.doctor_name,
+          date: booking.starts_at.slice(0, 10),
+          time: booking.starts_at.slice(11, 16),
+          antrean: booking.queue_number,
+          st: "Terjadwal",
+        };
+        B.unshift(b);
+        save();
+        S.done = b;
+        S.step = 4;
+        draw();
+        window.scrollTo(0, 0);
+      }
+
+      function reset() {
+        S = {
+          step: 1,
+          sv: null,
+          dr: null,
+          date: null,
+          time: null,
+          scheduleId: null,
+          slots: [],
+          slotsLoaded: false,
+          loadingSlots: false,
+          scheduleError: "",
+          nama: "",
+          hp: "",
+          untuk: "Diri sendiri",
+          jamin: "Umum",
+          keluhan: "",
+          err: "",
+          done: null,
+        };
+        draw();
+      }
+
+      function side() {
+        var v = svc(),
+          r = function (a, b) {
+            return "<dt>" + a + "</dt><dd>" + (b || "-") + "</dd>";
+          };
+        $("sum").innerHTML =
+          "<dl>" +
+          r("Layanan", v && v.n) +
+          r("Dokter", S.dr) +
+          r("Tanggal", S.date && fd(S.date)) +
+          r("Jam", S.time) +
+          r("Pasien", S.nama && esc(S.nama)) +
+          "</dl>";
+        $("list").innerHTML = B.length
+          ? B.map(function (b) {
+              return (
+                '<div class="bk"><div class="r"><strong>' +
+                b.kode +
+                '</strong><span class="tag' +
+                (x ? " x" : "") +
+                '">' +
+                b.st +
+                "</span></div><div>" +
+                esc(b.sv) +
+                '</div><div class="empty">' +
+                esc(b.dr) +
+                "<br>" +
+                fd(b.date) +
+                ", " +
+                b.time +
+                "</div>" +
+                "<div class=\"empty\">Antrean " +
+                esc(String(b.antrean || "-")) +
+                "</div>" +
+                "</div>"
+              );
+            }).join("")
+          : '<p class="empty">Belum ada reservasi. Selesaikan langkah di samping untuk membuat yang pertama.</p>';
+        if (B.length)
+          $("list").insertAdjacentHTML(
+            "beforeend",
+            '<p class="empty">Untuk perubahan atau pembatalan, hubungi petugas puskesmas.</p>',
+          );
+      }
+      /* Isi otomatis dari halaman diagnosis: reservasi.html?layanan=umum&keluhan=... */
+      (function () {
+        try {
+          var q = new URLSearchParams(location.search),
+            l = q.get("layanan"),
+            k = q.get("keluhan");
+          if (
+            l &&
+            SV.some(function (x) {
+              return x.id === l;
+            })
+          ) {
+            S.sv = l;
+            S.step = 2;
+          }
+          if (k) S.keluhan = k;
+        } catch (e) {}
+      })();
+      draw();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5faf8" />
+
+    <meta
+      name="description"
+      content="RANAHCARE - Digital Healthcare Ecosystem"
+    />
+
+    <title>Login | RANAHCARE</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- BACKGROUND -->
+    <div class="background-decoration" aria-hidden="true">
+      <div class="bg-circle circle-one"></div>
+      <div class="bg-circle circle-two"></div>
+      <div class="bg-circle circle-three"></div>
+      <div class="background-grid"></div>
+    </div>
+
+    <!-- LOGIN PAGE -->
+    <main class="login-page" id="loginPage">
+      <section class="login-card">
+        <!-- LOGO -->
+        <div class="login-logo">
+          <img src="../assets/1.png" alt="Logo RANAHCARE" />
+        </div>
+
+        <h1>RANAH<span>CARE</span></h1>
+
+        <h2>Healthcare For Everyone.</h2>
+
+        <p class="login-description">
+          Membangun ekosistem kesehatan digital yang terintegrasi, cerdas, dan
+          mudah diakses oleh seluruh masyarakat.
+        </p>
+
+        <!-- LOGIN BUTTON -->
+        <form id="loginForm">
+          <button type="submit" id="loginButton" class="login-button">
+            <span id="buttonText">Masuk ke RANAHCARE</span>
+
+            <span class="button-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12H19M12 5L19 12L12 19"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
+        </form>
+
+        <div id="loginMessage" class="login-message" aria-live="polite"></div>
+
+        <div class="login-footer">
+          <span class="footer-line"></span>
+          <span>RANAHCARE DIGITAL PLATFORM</span>
+          <span class="footer-line"></span>
+        </div>
+      </section>
+    </main>
+
+    <!-- =================================
+         CINEMATIC LOGIN TRANSITION
+    ================================== -->
+
+    <div class="login-transition" id="loginTransition" aria-hidden="true">
+      <!-- BACKGROUND EFFECT -->
+      <div class="transition-background">
+        <div class="transition-orb orb-one"></div>
+        <div class="transition-orb orb-two"></div>
+        <div class="transition-orb orb-three"></div>
+      </div>
+
+      <!-- LIGHT RING -->
+      <div class="light-ring ring-one"></div>
+      <div class="light-ring ring-two"></div>
+      <div class="light-ring ring-three"></div>
+
+      <!-- TRANSITION CARD -->
+      <div class="transition-card" id="transitionCard">
+        <!-- LOGO -->
+        <div class="transition-logo">
+          <div class="logo-glow"></div>
+
+          <img src="../assets/1.png" alt="RANAHCARE" />
+        </div>
+
+        <!-- BRAND -->
+        <div class="transition-brand">
+          <span>RANAH</span><strong>CARE</strong>
+        </div>
+
+        <div class="transition-subtitle">DIGITAL HEALTHCARE ECOSYSTEM</div>
+
+        <!-- ANIMATED ICON -->
+        <div class="transition-icon">
+          <div class="spinner" id="spinner">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="success-check" id="successCheck">
+            <svg viewBox="0 0 52 52">
+              <path d="M14 27L22 35L39 17" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- TEXT -->
+        <h2 id="transitionTitle">Menyiapkan Sistem</h2>
+
+        <p id="transitionDescription">
+          Mohon tunggu, kami sedang menyiapkan pengalaman terbaik untuk Anda.
+        </p>
+
+        <!-- PROGRESS -->
+        <div class="progress-wrapper">
+          <div class="progress-information">
+            <span id="progressLabel">INITIALIZING SYSTEM</span>
+            <span id="progressPercent">0%</span>
+          </div>
+
+          <div
+            class="transition-progress"
+            id="progressContainer"
+            role="progressbar"
+            aria-label="Proses masuk"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div id="progressBar">
+              <div class="progress-shine"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATUS -->
+        <div class="transition-status" id="transitionStatus">
+          <span class="status-dot"></span>
+
+          <span id="statusText">SECURE CONNECTION</span>
+        </div>
+      </div>
+
+      <!-- SUCCESS PARTICLES -->
+      <div class="success-particles" id="successParticles"></div>
+    </div>
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/role-router.js"></script>
+
+    <script>
+      const loginForm = document.getElementById("loginForm");
+      const loginButton = document.getElementById("loginButton");
+      const buttonText = document.getElementById("buttonText");
+
+      const loginPage = document.getElementById("loginPage");
+      const loginMessage = document.getElementById("loginMessage");
+
+      const loginTransition = document.getElementById("loginTransition");
+
+      const transitionTitle = document.getElementById("transitionTitle");
+      const transitionDescription = document.getElementById(
+        "transitionDescription",
+      );
+
+      const transitionStatus = document.getElementById("transitionStatus");
+      const statusText = document.getElementById("statusText");
+
+      const progressBar = document.getElementById("progressBar");
+      const progressContainer = document.getElementById("progressContainer");
+
+      const progressPercent = document.getElementById("progressPercent");
+      const progressLabel = document.getElementById("progressLabel");
+
+      const spinner = document.getElementById("spinner");
+      const successCheck = document.getElementById("successCheck");
+
+      const successParticles = document.getElementById("successParticles");
+
+      // =================================
+      // LOGIN PROCESS
+      // =================================
+
+      loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (loginButton.disabled) {
+          return;
+        }
+
+        // Disable button
+        loginButton.disabled = true;
+
+        buttonText.textContent = "Memproses...";
+
+        loginMessage.textContent = "";
+
+        // Show transition
+        loginPage.classList.add("page-exit");
+
+        loginTransition.classList.add("active");
+
+        loginTransition.setAttribute("aria-hidden", "false");
+
+        // Reset animation
+        progressBar.style.transition = "none";
+        progressBar.style.width = "0%";
+
+        progressPercent.textContent = "0%";
+
+        progressContainer.setAttribute("aria-valuenow", "0");
+
+        spinner.style.display = "block";
+        successCheck.classList.remove("show");
+
+        loginTransition.classList.remove("success");
+
+        // Reset text
+        transitionTitle.textContent = "Menyiapkan Sistem";
+
+        transitionDescription.textContent =
+          "Mohon tunggu, kami sedang menyiapkan pengalaman terbaik untuk Anda.";
+
+        progressLabel.textContent = "INITIALIZING SYSTEM";
+
+        statusText.textContent = "SECURE CONNECTION";
+
+        // Start animation
+        setTimeout(function () {
+          progressBar.style.transition = "width 2.2s cubic-bezier(.65,0,.35,1)";
+          progressBar.style.width = "100%";
+        }, 100);
+
+        // Progress percentage
+        let progress = 0;
+
+        const progressInterval = setInterval(function () {
+          if (progress < 100) {
+            progress += 1;
+
+            progressPercent.textContent = progress + "%";
+
+            progressContainer.setAttribute("aria-valuenow", progress);
+          } else {
+            clearInterval(progressInterval);
+          }
+        }, 22);
+
+        // Update loading information
+        setTimeout(function () {
+          transitionTitle.textContent = "Menghubungkan Layanan";
+
+          transitionDescription.textContent =
+            "Menghubungkan seluruh komponen ekosistem RANAHCARE.";
+
+          progressLabel.textContent = "CONNECTING SERVICES";
+        }, 650);
+
+        setTimeout(function () {
+          transitionTitle.textContent = "Mengamankan Sistem";
+
+          transitionDescription.textContent =
+            "Memastikan pengalaman digital Anda berjalan dengan optimal.";
+
+          progressLabel.textContent = "SECURITY CHECK";
+        }, 1400);
+
+        // SUCCESS
+        setTimeout(function () {
+          loginTransition.classList.add("success");
+
+          spinner.style.display = "none";
+
+          successCheck.classList.add("show");
+
+          transitionTitle.textContent = "Berhasil Masuk!";
+
+          transitionDescription.textContent =
+            "Selamat datang di RANAHCARE. Anda akan diarahkan ke halaman login.";
+
+          progressLabel.textContent = "SYSTEM READY";
+
+          progressPercent.textContent = "100%";
+
+          statusText.textContent = "ACCESS GRANTED";
+
+          createSuccessParticles();
+        }, 2400);
+
+        // REDIRECT
+        setTimeout(function () {
+          window.location.href = "profil.html";
+        }, 3900);
+      });
+
+      // =================================
+      // SUCCESS PARTICLES
+      // =================================
+
+      function createSuccessParticles() {
+        successParticles.innerHTML = "";
+
+        for (let i = 0; i < 35; i++) {
+          const particle = document.createElement("span");
+
+          particle.classList.add("particle");
+
+          const angle = Math.random() * 360;
+          const distance = 80 + Math.random() * 180;
+
+          particle.style.setProperty("--angle", angle + "deg");
+          particle.style.setProperty("--distance", distance + "px");
+
+          particle.style.animationDelay = Math.random() * 0.5 + "s";
+
+          successParticles.appendChild(particle);
+        }
+      }
+
+      // =================================
+      // LOGO ERROR HANDLER
+      // =================================
+
+      document
+        .querySelectorAll(".login-logo img, .transition-logo img")
+        .forEach(function (image) {
+          image.addEventListener("error", function () {
+            loginMessage.textContent =
+              "Logo tidak ditemukan. Periksa kembali lokasi file assets/1.png.";
+          });
+        });
+    </script>
+  </body>
+</html>

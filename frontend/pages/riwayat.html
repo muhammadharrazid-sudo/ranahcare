@@ -1,0 +1,1470 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="RANAHCARE - Riwayat Aktivitas dan Kunjungan Kesehatan"
+    />
+
+    <title>Riwayat | RANAHCARE</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS RIWAYAT -->
+    <link rel="stylesheet" href="../pages/css/riwayat.css" />
+    <link rel="stylesheet" href="../css/auth-ui.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="navbar-left">
+        <a
+          href="dashboard.html"
+          class="back-button"
+          aria-label="Kembali ke dashboard"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M19 12H5M12 19L5 12L12 5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+
+      <nav class="nav-menu" aria-label="Navigasi utama">
+        <a href="dashboard.html">Beranda</a>
+        <a href="pelayanan.html">Pelayanan</a>
+        <a href="darurat.html">Darurat</a>
+      </nav>
+
+      <!-- PROFILE -->
+      <div class="profile-wrapper">
+        <button
+          class="profile-button"
+          type="button"
+          aria-expanded="false"
+          aria-label="Buka menu profil"
+        >
+          <div class="profile-avatar">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle
+                cx="12"
+                cy="8"
+                r="4"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+              <path
+                d="M4 21C4 17.686 7.582 15 12 15C16.418 15 20 17.686 20 21"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+
+          <div class="profile-info">
+            <strong>Pengguna</strong>
+            <span>Member RANAHCARE</span>
+          </div>
+
+          <svg
+            class="dropdown-arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M7 10L12 15L17 10"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <div class="profile-dropdown">
+          <a href="profil.html">Profil Saya</a>
+          <a href="contact.html">Hubungi Kami</a>
+
+          <div class="dropdown-divider"></div>
+
+          <a href="index.html" class="logout-link" data-logout>Keluar</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="app-container">
+      <div class="main-content">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="sidebar-title">MENU UTAMA</div>
+
+          <nav class="sidebar-menu" aria-label="Menu halaman">
+            <a href="dashboard.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 10.5L12 3L21 10.5V20H14V14H10V20H3V10.5Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Beranda</span>
+            </a>
+
+            <a href="pelayanan.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect
+                    x="3"
+                    y="4"
+                    width="18"
+                    height="16"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M12 8V16M8 12H16"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Pelayanan Kesehatan</span>
+            </a>
+
+            <a href="darurat.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 7V13M12 16H12.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Layanan Darurat</span>
+            </a>
+
+            <a href="resepsionis.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M12 8V16M8 12H16"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Resepsionis AI</span>
+            </a>
+
+            <a href="riwayat.html" class="sidebar-item active">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 12A9 9 0 1 0 6 5.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M3 4V9H8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 7V12L15 14"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Riwayat</span>
+            </a>
+
+            <a href="antrean.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle
+                    cx="12"
+                    cy="8"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M4 21V19C4 17.3431 5.34315 16 7 16H17C18.6569 16 20 17.3431 20 19V21"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Antrean Puskesmas</span>
+            </a>
+
+            <a href="contact.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M4 5H20V17H8L4 21V5Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Hubungi Kami</span>
+            </a>
+          </nav>
+
+          <!-- SIDEBAR HELP -->
+          <div class="sidebar-bottom">
+            <div class="help-box">
+              <div class="help-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M9.5 9A2.5 2.5 0 1 1 13.5 11C12.5 11.7 12 12.2 12 13.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M12 17H12.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+
+              <strong>Butuh Bantuan?</strong>
+
+              <p>Hubungi tim RANAHCARE untuk informasi lebih lanjut.</p>
+
+              <a href="contact.html">Hubungi Kami</a>
+            </div>
+
+            <div class="sidebar-footer">© 2026 RANAHCARE</div>
+          </div>
+        </aside>
+
+        <!-- CONTENT -->
+        <section class="content">
+          <!-- PAGE HEADING -->
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                RIWAYAT KESEHATAN
+              </div>
+
+              <h1>Riwayat Aktivitas</h1>
+
+              <p>
+                Lihat kembali kunjungan, konsultasi, dan aktivitas kesehatan
+                Anda.
+              </p>
+            </div>
+
+            <div class="heading-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M3 12A9 9 0 1 0 6 5.5"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                />
+
+                <path
+                  d="M3 4V9H8"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linejoin="round"
+                />
+
+                <path
+                  d="M12 7V12L15 14"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- STATISTICS -->
+          <section class="history-stats">
+            <div class="stat-card">
+              <div class="stat-icon total">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M5 3H16L20 7V21H5V3Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M15 3V8H20M9 13H16M9 17H16"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <strong id="statTotal">0</strong>
+                <span>Total Aktivitas</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon consultation">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M4 5H20V17H8L4 21V5Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8 9H16M8 13H13"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <strong id="statConsultation">0</strong>
+                <span>Konsultasi</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon reservation">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="16"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M8 3V7M16 3V7M3 11H21"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <strong id="statReservation">0</strong>
+                <span>Reservasi</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon emergency">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M12 7V13M12 16H12.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <strong id="statEmergency">0</strong>
+                <span>Darurat</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- TOOLBAR -->
+          <section class="history-toolbar">
+            <div class="search-box">
+              <svg
+                class="search-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="7"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M16 16L21 21"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="Cari riwayat, dokter, atau fasilitas..."
+                aria-label="Cari riwayat aktivitas"
+              />
+            </div>
+
+            <div
+              class="filter-chips"
+              role="tablist"
+              aria-label="Filter riwayat"
+            >
+              <button
+                class="filter-chip active"
+                type="button"
+                data-category="semua"
+              >
+                Semua
+              </button>
+
+              <button
+                class="filter-chip"
+                type="button"
+                data-category="konsultasi"
+              >
+                Konsultasi
+              </button>
+
+              <button
+                class="filter-chip"
+                type="button"
+                data-category="reservasi"
+              >
+                Reservasi
+              </button>
+
+              <button class="filter-chip" type="button" data-category="darurat">
+                Darurat
+              </button>
+
+              <button class="filter-chip" type="button" data-category="apotek">
+                Farmasi
+              </button>
+            </div>
+          </section>
+
+          <!-- HISTORY SECTION -->
+          <section class="history-section">
+            <div class="section-heading">
+              <div>
+                <h2>Riwayat Aktivitas</h2>
+                <p>Catatan kunjungan dan aktivitas kesehatan Anda.</p>
+              </div>
+
+              <span class="result-count">6 aktivitas ditemukan</span>
+            </div>
+
+            <div class="history-timeline">
+              <!-- ITEM 1 -->
+              <article
+                class="history-item"
+                data-category="konsultasi"
+                data-type="Konsultasi"
+                data-title="Konsultasi Dokter Umum"
+                data-date="12 November 2026"
+                data-time="09:30 WIB"
+                data-location="Klinik Sehat, Padang"
+                data-status="Selesai"
+                data-description="Konsultasi keluhan demam dan batuk. Dokter menyarankan istirahat yang cukup serta memberikan resep obat."
+              >
+                <div class="history-date">
+                  <strong>12</strong>
+                  <span>Nov</span>
+                </div>
+
+                <div class="history-card">
+                  <div class="history-icon consultation">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M4 5H20V17H8L4 21V5Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8 9H16M8 13H13"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div class="history-content">
+                    <div class="history-top">
+                      <div>
+                        <h3>Konsultasi Dokter Umum</h3>
+
+                        <div class="history-meta">
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                cx="12"
+                                cy="8"
+                                r="4"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <path
+                                d="M4 21C4 17.686 7.582 15 12 15C16.418 15 20 17.686 20 21"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            dr. Andini Putri
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="9"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <path
+                                d="M12 7V12L15 14"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            09:30 WIB
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M20 10C20 15 12 22 12 22S4 15 4 10A8 8 0 1 1 20 10Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <circle
+                                cx="12"
+                                cy="10"
+                                r="2.5"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                            </svg>
+                            Klinik Sehat, Padang
+                          </span>
+                        </div>
+                      </div>
+
+                      <span class="history-status done">Selesai</span>
+                    </div>
+
+                    <p class="history-desc">
+                      Konsultasi keluhan demam dan batuk. Dokter menyarankan
+                      istirahat yang cukup serta memberikan resep obat.
+                    </p>
+
+                    <div class="history-actions">
+                      <button class="detail-button" type="button">
+                        Lihat Detail
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ITEM 2 -->
+              <article
+                class="history-item"
+                data-category="reservasi"
+                data-type="Reservasi"
+                data-title="Reservasi Poli Gigi"
+                data-date="5 November 2026"
+                data-time="14:00 WIB"
+                data-location="RSUP Padang"
+                data-status="Menunggu"
+                data-description="Pemeriksaan rutin kesehatan gigi dan pembersihan karang gigi di poli gigi rumah sakit."
+              >
+                <div class="history-date">
+                  <strong>05</strong>
+                  <span>Nov</span>
+                </div>
+
+                <div class="history-card">
+                  <div class="history-icon reservation">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <rect
+                        x="3"
+                        y="5"
+                        width="18"
+                        height="16"
+                        rx="2"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+                      <path
+                        d="M8 3V7M16 3V7M3 11H21"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div class="history-content">
+                    <div class="history-top">
+                      <div>
+                        <h3>Reservasi Poli Gigi</h3>
+
+                        <div class="history-meta">
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                cx="12"
+                                cy="8"
+                                r="4"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <path
+                                d="M4 21C4 17.686 7.582 15 12 15C16.418 15 20 17.686 20 21"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            drg. Rina Maharani
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="9"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <path
+                                d="M12 7V12L15 14"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            14:00 WIB
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M20 10C20 15 12 22 12 22S4 15 4 10A8 8 0 1 1 20 10Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <circle
+                                cx="12"
+                                cy="10"
+                                r="2.5"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                            </svg>
+                            RSUP Padang
+                          </span>
+                        </div>
+                      </div>
+
+                      <span class="history-status pending">Menunggu</span>
+                    </div>
+
+                    <p class="history-desc">
+                      Pemeriksaan rutin kesehatan gigi dan pembersihan karang
+                      gigi di poli gigi rumah sakit.
+                    </p>
+
+                    <div class="history-actions">
+                      <button class="detail-button" type="button">
+                        Lihat Detail
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ITEM 3 -->
+              <article
+                class="history-item"
+                data-category="darurat"
+                data-type="Darurat"
+                data-title="Panggilan Darurat"
+                data-date="28 Oktober 2026"
+                data-time="22:15 WIB"
+                data-location="Kediaman, Padang"
+                data-status="Selesai"
+                data-description="Permintaan bantuan ambulans untuk anggota keluarga yang mengalami sesak napas. Tim medis tiba dalam waktu singkat."
+              >
+                <div class="history-date">
+                  <strong>28</strong>
+                  <span>Okt</span>
+                </div>
+
+                <div class="history-card">
+                  <div class="history-icon emergency">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 7V13M12 16H12.01"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div class="history-content">
+                    <div class="history-top">
+                      <div>
+                        <h3>Panggilan Darurat</h3>
+
+                        <div class="history-meta">
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M22 16.92V20A2 2 0 0 1 19.82 22C9.72 21.04 2.96 14.28 2 4.18A2 2 0 0 1 4 2H7.08A2 2 0 0 1 9.06 3.71L9.7 6.27"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            PSC 119
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="9"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <path
+                                d="M12 7V12L15 14"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            22:15 WIB
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M20 10C20 15 12 22 12 22S4 15 4 10A8 8 0 1 1 20 10Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <circle
+                                cx="12"
+                                cy="10"
+                                r="2.5"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                            </svg>
+                            Kediaman, Padang
+                          </span>
+                        </div>
+                      </div>
+
+                      <span class="history-status done">Selesai</span>
+                    </div>
+
+                    <p class="history-desc">
+                      Permintaan bantuan ambulans untuk anggota keluarga yang
+                      mengalami sesak napas. Tim medis tiba dalam waktu singkat.
+                    </p>
+
+                    <div class="history-actions">
+                      <button class="detail-button" type="button">
+                        Lihat Detail
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ITEM 4 -->
+              <article
+                class="history-item"
+                data-category="apotek"
+                data-type="Farmasi"
+                data-title="Pembelian Obat"
+                data-date="20 Oktober 2026"
+                data-time="10:45 WIB"
+                data-location="Apotek Sehat, Padang"
+                data-status="Selesai"
+                data-description="Pengambilan obat resep dokter berupa paracetamol dan vitamin untuk mendukung pemulihan."
+              >
+                <div class="history-date">
+                  <strong>20</strong>
+                  <span>Okt</span>
+                </div>
+
+                <div class="history-card">
+                  <div class="history-icon pharmacy">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M10 3H14V9H10V3Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M10 9H14C17.3137 9 20 11.6863 20 15C20 18.3137 17.3137 21 14 21H10C6.68629 21 4 18.3137 4 15C4 11.6863 6.68629 9 10 9Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+                      <path
+                        d="M12 12V18M9 15H15"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div class="history-content">
+                    <div class="history-top">
+                      <div>
+                        <h3>Pembelian Obat</h3>
+
+                        <div class="history-meta">
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M10 3H14V9H10V3Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linejoin="round"
+                              />
+                              <path
+                                d="M10 9H14C17.3137 9 20 11.6863 20 15C20 18.3137 17.3137 21 14 21H10C6.68629 21 4 18.3137 4 15C4 11.6863 6.68629 9 10 9Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                            </svg>
+                            Apotek Sehat
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="9"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <path
+                                d="M12 7V12L15 14"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            10:45 WIB
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M20 10C20 15 12 22 12 22S4 15 4 10A8 8 0 1 1 20 10Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <circle
+                                cx="12"
+                                cy="10"
+                                r="2.5"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                            </svg>
+                            Apotek Sehat, Padang
+                          </span>
+                        </div>
+                      </div>
+
+                      <span class="history-status done">Selesai</span>
+                    </div>
+
+                    <p class="history-desc">
+                      Pengambilan obat resep dokter berupa paracetamol dan
+                      vitamin untuk mendukung pemulihan.
+                    </p>
+
+                    <div class="history-actions">
+                      <button class="detail-button" type="button">
+                        Lihat Detail
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ITEM 5 -->
+              <article
+                class="history-item"
+                data-category="konsultasi"
+                data-type="Konsultasi"
+                data-title="Konsultasi Spesialis Jantung"
+                data-date="14 Oktober 2026"
+                data-time="11:00 WIB"
+                data-location="Rumah Sakit Umum"
+                data-status="Dibatalkan"
+                data-description="Jadwal konsultasi dibatalkan karena perubahan jadwal dokter. Silakan jadwalkan ulang melalui halaman reservasi."
+              >
+                <div class="history-date">
+                  <strong>14</strong>
+                  <span>Okt</span>
+                </div>
+
+                <div class="history-card">
+                  <div class="history-icon consultation">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M4 5H20V17H8L4 21V5Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8 9H16M8 13H13"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div class="history-content">
+                    <div class="history-top">
+                      <div>
+                        <h3>Konsultasi Spesialis Jantung</h3>
+
+                        <div class="history-meta">
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                cx="12"
+                                cy="8"
+                                r="4"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <path
+                                d="M4 21C4 17.686 7.582 15 12 15C16.418 15 20 17.686 20 21"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            dr. Budi Santoso
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="9"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <path
+                                d="M12 7V12L15 14"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            11:00 WIB
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M20 10C20 15 12 22 12 22S4 15 4 10A8 8 0 1 1 20 10Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <circle
+                                cx="12"
+                                cy="10"
+                                r="2.5"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                            </svg>
+                            Rumah Sakit Umum
+                          </span>
+                        </div>
+                      </div>
+
+                      <span class="history-status cancelled">Dibatalkan</span>
+                    </div>
+
+                    <p class="history-desc">
+                      Jadwal konsultasi dibatalkan karena perubahan jadwal
+                      dokter. Silakan jadwalkan ulang melalui halaman reservasi.
+                    </p>
+
+                    <div class="history-actions">
+                      <button class="detail-button" type="button">
+                        Lihat Detail
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ITEM 6 -->
+              <article
+                class="history-item"
+                data-category="reservasi"
+                data-type="Reservasi"
+                data-title="Reservasi Puskesmas"
+                data-date="2 Oktober 2026"
+                data-time="08:00 WIB"
+                data-location="Puskesmas Padang"
+                data-status="Selesai"
+                data-description="Pemeriksaan tekanan darah dan gula darah rutin. Hasil pemeriksaan dalam batas normal."
+              >
+                <div class="history-date">
+                  <strong>02</strong>
+                  <span>Okt</span>
+                </div>
+
+                <div class="history-card">
+                  <div class="history-icon reservation">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <rect
+                        x="3"
+                        y="5"
+                        width="18"
+                        height="16"
+                        rx="2"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      />
+                      <path
+                        d="M8 3V7M16 3V7M3 11H21"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div class="history-content">
+                    <div class="history-top">
+                      <div>
+                        <h3>Reservasi Puskesmas</h3>
+
+                        <div class="history-meta">
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                cx="12"
+                                cy="8"
+                                r="4"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <path
+                                d="M4 21C4 17.686 7.582 15 12 15C16.418 15 20 17.686 20 21"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            dr. Siti Aminah
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="9"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <path
+                                d="M12 7V12L15 14"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                              />
+                            </svg>
+                            08:00 WIB
+                          </span>
+
+                          <span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M20 10C20 15 12 22 12 22S4 15 4 10A8 8 0 1 1 20 10Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                              <circle
+                                cx="12"
+                                cy="10"
+                                r="2.5"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              />
+                            </svg>
+                            Puskesmas Padang
+                          </span>
+                        </div>
+                      </div>
+
+                      <span class="history-status done">Selesai</span>
+                    </div>
+
+                    <p class="history-desc">
+                      Pemeriksaan tekanan darah dan gula darah rutin. Hasil
+                      pemeriksaan dalam batas normal.
+                    </p>
+
+                    <div class="history-actions">
+                      <button class="detail-button" type="button">
+                        Lihat Detail
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div class="empty-state" hidden>
+              <div class="empty-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 12A9 9 0 1 0 6 5.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M3 4V9H8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M12 7V12L15 14"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <h3>Riwayat Tidak Ditemukan</h3>
+
+              <p>Coba kata kunci atau kategori yang berbeda.</p>
+            </div>
+          </section>
+
+          <!-- INFORMATION -->
+          <section class="safety-information">
+            <div class="safety-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M12 11V16M12 8H12.01"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+
+            <div>
+              <h3>Informasi Penting</h3>
+
+              <p>
+                Riwayat ini mencatat aktivitas kesehatan Anda di RANAHCARE. Data
+                bersifat pribadi dan hanya dapat diakses oleh akun Anda. Jika
+                ada data yang tidak sesuai, silakan hubungi tim kami.
+              </p>
+            </div>
+          </section>
+
+          <!-- FOOTER -->
+          <footer class="page-footer">
+            <p>
+              © 2026 <strong>RANAHCARE</strong>. Digital Healthcare Platform.
+            </p>
+
+            <span>Melayani dengan kepedulian.</span>
+          </footer>
+        </section>
+      </div>
+    </main>
+
+    <!-- MODAL DETAIL -->
+    <div class="modal-overlay" role="presentation">
+      <div
+        class="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button class="close-modal" type="button" aria-label="Tutup detail">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+
+        <div class="modal-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M3 12A9 9 0 1 0 6 5.5"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+            <path
+              d="M3 4V9H8"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 7V12L15 14"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+
+        <span class="modal-category">Riwayat</span>
+
+        <h2 id="modalTitle" class="modal-title">Detail Riwayat</h2>
+
+        <div class="modal-meta">
+          <div class="modal-meta-row">
+            <span>Tanggal</span>
+            <strong id="modalDate">—</strong>
+          </div>
+
+          <div class="modal-meta-row">
+            <span>Waktu</span>
+            <strong id="modalTime">—</strong>
+          </div>
+
+          <div class="modal-meta-row">
+            <span>Lokasi</span>
+            <strong id="modalLocation">—</strong>
+          </div>
+
+          <div class="modal-meta-row">
+            <span>Status</span>
+            <strong id="modalStatus">—</strong>
+          </div>
+        </div>
+
+        <p class="modal-description" id="modalDescription">
+          Informasi riwayat aktivitas.
+        </p>
+
+        <button class="modal-button close-modal" type="button">
+          Tutup Detail
+        </button>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/auth-ui.js"></script>
+    <script src="../js/riwayat.js"></script>
+  </body>
+</html>

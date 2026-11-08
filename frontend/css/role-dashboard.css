@@ -1,0 +1,763 @@
+/* =========================================================
+   RANAHCARE - ROLE DASHBOARD
+   File: css/role-dashboard.css
+   Dipakai oleh: pasien.html, dokter.html, admin.html
+========================================================= */
+
+/* =========================
+   1. ROOT & RESET
+========================= */
+
+:root {
+  --primary: #0f766e;
+  --primary-dark: #0b5f58;
+  --primary-light: #e3f4ee;
+  --accent: #16a085;
+  --ink: #12392f;
+  --muted: #6b7f79;
+  --line: #e4eeea;
+  --surface: #ffffff;
+  --bg: #f4faf8;
+  --warning: #b45309;
+  --danger: #b3392b;
+  --info: #1d4ed8;
+  --radius: 18px;
+  --shadow: 0 14px 36px rgba(18, 57, 47, 0.07);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================
+   2. NAVBAR
+========================= */
+
+.main-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 12px 5%;
+
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-brand img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.navbar-brand span {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  color: var(--ink);
+}
+
+.navbar-brand strong {
+  color: var(--primary);
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar-menu a {
+  padding: 9px 13px;
+
+  border-radius: 9px;
+
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+
+  transition: 0.2s;
+}
+
+.navbar-menu a:hover,
+.navbar-menu a.active {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 39px;
+  padding: 0 14px;
+
+  border: 0;
+  border-radius: 10px;
+  background: var(--primary);
+
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+
+  transition: 0.25s ease;
+}
+
+.profile-button > svg {
+  width: 15px;
+  height: 15px;
+}
+
+.profile-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.logout-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 39px;
+  padding: 0 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+
+  transition: 0.2s;
+}
+
+.logout-button:hover {
+  border-color: #f0c9c4;
+  background: #fff6f5;
+  color: var(--danger);
+}
+
+/* =========================
+   3. LAYOUT
+========================= */
+
+.role-container {
+  width: min(1180px, 92%);
+  margin: 0 auto;
+  padding: 28px 0 60px;
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 7px 13px;
+  margin-bottom: 14px;
+
+  border: 1px solid rgba(15, 118, 110, 0.16);
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--primary-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.role-badge .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(22, 160, 133, 0.14);
+}
+
+.role-badge.dokter {
+  border-color: rgba(29, 78, 216, 0.18);
+  color: #1d4ed8;
+}
+
+.role-badge.dokter .dot {
+  background: #1d4ed8;
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+}
+
+.role-badge.admin {
+  border-color: rgba(180, 83, 9, 0.18);
+  color: #b45309;
+}
+
+.role-badge.admin .dot {
+  background: #d97706;
+  box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.14);
+}
+
+/* =========================
+   4. HERO
+========================= */
+
+.role-hero {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  align-items: center;
+
+  padding: 34px 36px;
+  margin-bottom: 22px;
+
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      circle at 92% 10%,
+      rgba(255, 255, 255, 0.9),
+      transparent 42%
+    ),
+    linear-gradient(140deg, #e9f9f2, #d6f0e7);
+}
+
+.role-hero h1 {
+  font-size: clamp(25px, 3.4vw, 36px);
+  line-height: 1.25;
+  letter-spacing: -1.2px;
+  font-weight: 800;
+  color: #103d33;
+}
+
+.role-hero h1 span {
+  color: var(--primary);
+}
+
+.role-hero p {
+  max-width: 520px;
+  margin-top: 12px;
+
+  font-size: 12px;
+  line-height: 1.9;
+  color: #517066;
+}
+
+.hero-date {
+  justify-self: end;
+
+  padding: 16px 20px;
+
+  border: 1px solid rgba(15, 118, 110, 0.14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.75);
+
+  text-align: right;
+}
+
+.hero-date strong {
+  display: block;
+  font-size: 16px;
+  color: var(--primary-dark);
+}
+
+.hero-date small {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* =========================
+   5. STATISTIK
+========================= */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  padding: 20px;
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 14px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.stat-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  color: #103d33;
+}
+
+.stat-card span {
+  display: block;
+  margin-top: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.stat-card.blue .stat-icon {
+  background: #e6efff;
+  color: var(--info);
+}
+
+.stat-card.orange .stat-icon {
+  background: #fdf0dd;
+  color: var(--warning);
+}
+
+.stat-card.red .stat-icon {
+  background: #fdeceb;
+  color: var(--danger);
+}
+
+/* =========================
+   6. PANEL & GRID
+========================= */
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.panel {
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel-head h2 {
+  font-size: 15px;
+  letter-spacing: -0.3px;
+  color: #103d33;
+}
+
+.panel-head p {
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.panel-link {
+  flex-shrink: 0;
+
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.panel-link:hover {
+  text-decoration: underline;
+}
+
+.panel-body {
+  padding: 20px 22px;
+}
+
+.side-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* =========================
+   7. DAFTAR ANTREAN
+========================= */
+
+.queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.queue-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding: 14px 16px;
+
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fbfdfc;
+}
+
+.queue-item strong {
+  display: block;
+  font-size: 12px;
+  color: #1d4a3f;
+}
+
+.queue-item small {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.queue-value {
+  text-align: right;
+}
+
+.queue-value strong {
+  font-size: 18px;
+  color: var(--primary-dark);
+}
+
+.queue-value span {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 4px 9px;
+
+  border-radius: 50px;
+
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.status-pill.open {
+  background: #e8f7f0;
+  color: #08745e;
+}
+
+.status-pill.closed {
+  background: #fdeceb;
+  color: var(--danger);
+}
+
+/* =========================
+   8. TABEL
+========================= */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  padding: 12px 16px;
+
+  border-bottom: 1px solid var(--line);
+  background: #f8fcfa;
+
+  text-align: left;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0f6f3;
+
+  font-size: 11px;
+  color: #33564c;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.data-table tbody tr:hover {
+  background: #fbfdfc;
+}
+
+.data-table strong {
+  color: #1d4a3f;
+}
+
+.patient-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mini-avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.mini-avatar.blue {
+  background: #e6efff;
+  color: var(--info);
+}
+
+.mini-avatar.orange {
+  background: #fdf0dd;
+  color: var(--warning);
+}
+
+/* =========================
+   9. AKSI CEPAT
+========================= */
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.quick-card {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  padding: 16px;
+
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fbfdfc;
+
+  transition: 0.22s;
+}
+
+.quick-card:hover {
+  border-color: rgba(15, 118, 110, 0.35);
+  background: #f3fbf7;
+  transform: translateY(-2px);
+}
+
+.quick-card svg {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+}
+
+.quick-card strong {
+  font-size: 11px;
+  color: #1d4a3f;
+}
+
+.quick-card small {
+  font-size: 9px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* =========================
+   10. JADWAL
+========================= */
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding: 13px 15px;
+
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fbfdfc;
+}
+
+.schedule-time {
+  flex-shrink: 0;
+
+  padding: 7px 10px;
+
+  border-radius: 9px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.schedule-item strong {
+  display: block;
+  font-size: 11px;
+  color: #1d4a3f;
+}
+
+.schedule-item small {
+  display: block;
+  margin-top: 2px;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+/* =========================
+   11. RESPONSIVE
+========================= */
+
+@media (max-width: 980px) {
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .role-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-date {
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 760px) {
+  .main-navbar {
+    flex-wrap: wrap;
+    padding: 12px 5%;
+  }
+
+  .navbar-menu {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .navbar-menu a {
+    white-space: nowrap;
+  }
+
+  .role-hero {
+    padding: 24px 22px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-button span {
+    display: none;
+  }
+}

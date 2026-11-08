@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="RANAHCARE Digital Healthcare Platform" />
+
+    <title>Dashboard | RANAHCARE</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/auth-ui.css" />
+  </head>
+
+  <body>
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <header class="main-navbar">
+      <!-- LOGO -->
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/1.png" alt="Logo RANAHCARE" />
+
+        <span> RANAH<strong>CARE</strong> </span>
+      </a>
+
+      <!-- NAVIGATION -->
+      <nav class="navbar-menu" aria-label="Navigasi utama">
+        <a href="dashboard.html" class="menu-link active"> Beranda </a>
+
+        <!-- DROPDOWN LAYANAN -->
+        <details class="menu-dropdown">
+          <summary class="menu-link dropdown-toggle">
+            Layanan
+
+            <svg
+              class="dropdown-arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 9L12 15L18 9"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </summary>
+
+          <div class="dropdown-content">
+            <a href="pelayanan.html">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M3 21V7L12 3L21 7V21H3Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 21V14H15V21M12 8V12M10 10H14"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              Unit Pelayanan Kesehatan
+            </a>
+
+            <a href="darurat.html">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M12 22S20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 8V14M9 11H15"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              Unit Layanan Darurat
+            </a>
+
+            <a href="antrean.html">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle
+                  cx="12"
+                  cy="8"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                />
+                <path
+                  d="M4 21V19C4 17.3431 5.34315 16 7 16H17C18.6569 16 20 17.3431 20 19V21"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              Antrean Puskesmas
+            </a>
+
+            <a href="contact.html">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M4 5H20V19H4V5Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M4 7L12 13L20 7"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              Contact
+            </a>
+          </div>
+        </details>
+
+        <a href="profil.html" class="menu-link"> Profil </a>
+
+        <a href="contact.html" class="menu-link"> Kontak </a>
+      </nav>
+
+      <!-- NAVBAR ACTIONS -->
+      <div class="navbar-actions">
+        <!-- SEARCH -->
+        <form class="navbar-search" id="searchForm">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Cari layanan..."
+            autocomplete="off"
+            aria-label="Cari layanan"
+          />
+
+          <button type="submit" aria-label="Cari">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle
+                cx="10.8"
+                cy="10.8"
+                r="6.8"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+
+              <path
+                d="M16 16L21 21"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </form>
+
+        <!-- PROFILE BUTTON -->
+        <a href="profil.html" class="profile-button">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle
+              cx="12"
+              cy="8"
+              r="4"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+
+            <path
+              d="M4 21C4 17.1 7.1 14 11 14H13C16.9 14 20 17.1 20 21"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+            />
+          </svg>
+
+          Profil Saya
+        </a>
+        <a href="index.html">🏠</a>
+      </div>
+    </header>
+
+    <!-- =========================================
+         MAIN DASHBOARD
+    ========================================== -->
+
+    <main class="dashboard-container">
+      <!-- =====================================
+             HERO SECTION
+        ====================================== -->
+
+      <section class="welcome-section">
+        <div class="welcome-content">
+          <span class="welcome-badge">
+            <span class="badge-dot"></span>
+
+            DIGITAL HEALTHCARE PLATFORM
+          </span>
+
+          <h1>
+            Selamat Datang di
+            <span>RANAHCARE</span>
+          </h1>
+
+          <p>
+            Ranah Care adalah platform pelayanan kesehatan publik untuk membantu
+            memudahkan masyarakat dalam mendapatkan informasi, melakukan
+            reservasi, dan mengakses layanan kesehatan secara terintegrasi.
+          </p>
+
+          <div class="welcome-actions">
+            <a href="pelayanan.html" class="hero-primary-button">
+              Jelajahi Layanan
+
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+
+            <a href="contact.html" class="hero-secondary-button">
+              Hubungi Kami
+            </a>
+          </div>
+        </div>
+
+        <!-- HERO DECORATION -->
+
+        <div class="welcome-visual">
+          <div class="decoration-circle circle-one"></div>
+          <div class="decoration-circle circle-two"></div>
+
+          <!-- MEDICAL CARD -->
+          <div class="medical-card">
+            <div class="medical-card-top">
+              <div class="medical-icon">
+                <img src="../assets/1.png" alt="Logo RANAHCARE" />
+              </div>
+
+              <span class="medical-card-label"> HEALTHCARE </span>
+            </div>
+
+            <h3>RANAHCARE</h3>
+
+            <p>Pelayanan Kesehatan Digital</p>
+
+            <div class="medical-divider"></div>
+
+            <div class="medical-status">
+              <span class="status-indicator"></span>
+
+              Digital Healthcare Platform
+            </div>
+          </div>
+
+          <!-- DECORATIVE FLOATING CARD -->
+          <div class="floating-health-card">
+            <div class="floating-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M12 22S20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+
+                <path
+                  d="M12 8V14M9 11H15"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+
+            <div>
+              <strong>Healthcare</strong>
+              <span>Lebih Mudah</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================
+             SERVICES SECTION
+        ====================================== -->
+
+      <section class="services-section">
+        <!-- SECTION HEADING -->
+        <div class="section-heading">
+          <div>
+            <span class="section-eyebrow"> LAYANAN DIGITAL </span>
+
+            <h2>LAYANAN KAMI</h2>
+
+            <p>Pilih layanan kesehatan yang ingin kamu akses.</p>
+          </div>
+
+          <a href="pelayanan.html" class="view-all">
+            Lihat semua layanan
+
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M5 12H19M19 12L12 5M19 12L12 19"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <!-- SERVICE GRID -->
+        <div class="service-grid">
+          <!-- RESEPSIONIS -->
+          <a href="resepsionis.html" class="service-card">
+            <div class="service-top">
+              <div class="service-icon receptionist-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle
+                    cx="12"
+                    cy="8"
+                    r="3.5"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+
+                  <path
+                    d="M5 21C5 17.1 8.1 14 12 14C15.9 14 19 17.1 19 21"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M18 5L20 7L22 5"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <span class="service-number"> 01 </span>
+            </div>
+
+            <h3>RESEPSIONIS</h3>
+
+            <p>
+              Informasi dan bantuan pelayanan kesehatan untuk memudahkan
+              masyarakat mendapatkan layanan yang dibutuhkan.
+            </p>
+
+            <div class="card-action">
+              Buka layanan
+
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M5 12H19M19 12L12 5M19 12L12 19"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- RESERVASI -->
+          <a href="reservasi.html" class="service-card">
+            <div class="service-top">
+              <div class="service-icon reservation-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="16"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+
+                  <path
+                    d="M7 3V7M17 3V7M3 10H21"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M8 14H8.01M12 14H12.01M16 14H16.01M8 17H8.01M12 17H12.01"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <span class="service-number"> 02 </span>
+            </div>
+
+            <h3>RESERVASI</h3>
+
+            <p>
+              Akses informasi dan pengelolaan jadwal kunjungan kesehatan secara
+              lebih mudah dan terorganisir.
+            </p>
+
+            <div class="card-action">
+              Buka layanan
+
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M5 12H19M19 12L12 5M19 12L12 19"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- DIAGNOSIS -->
+          <a href="diagnosis.html" class="service-card">
+            <div class="service-top">
+              <div class="service-icon diagnosis-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 21S4 17 4 10V5L12 2L20 5V10C20 17 12 21 12 21Z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 7V13M9 10H15"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <span class="service-number"> 03 </span>
+            </div>
+
+            <h3>DIAGNOSIS</h3>
+
+            <p>
+              Akses informasi kesehatan dan pemeriksaan awal untuk membantu
+              memahami kondisi kesehatan.
+            </p>
+
+            <div class="card-action">
+              Buka layanan
+
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M5 12H19M19 12L12 5M19 12L12 19"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- SEARCH FEEDBACK -->
+        <p id="searchFeedback" class="search-feedback" aria-live="polite"></p>
+      </section>
+
+      <!-- =====================================
+             INFORMATION BANNER
+        ====================================== -->
+
+      <section class="information-banner">
+        <div class="information-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M12 3V21M3 12H21"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+
+        <div class="information-content">
+          <span class="information-label"> RANAHCARE DIGITAL SERVICE </span>
+
+          <h3>Kesehatan Lebih Mudah Bersama RANAHCARE</h3>
+
+          <p>
+            Temukan informasi dan akses layanan kesehatan melalui satu platform
+            digital yang terintegrasi.
+          </p>
+        </div>
+
+        <a href="pelayanan.html" class="information-button">
+          Mulai Sekarang
+
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M5 12H19M19 12L12 5M19 12L12 19"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </section>
+    </main>
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="dashboard-footer">
+      <div class="footer-inner">
+        <!-- FOOTER BRAND -->
+        <div class="footer-information">
+          <a href="dashboard.html" class="footer-brand">
+            RANAH<strong>CARE</strong>
+          </a>
+
+          <p class="footer-description">
+            Platform pelayanan kesehatan digital untuk masyarakat yang lebih
+            mudah, cepat, dan terintegrasi.
+          </p>
+
+          <span class="copyright">
+            © 2026 RANAHCARE. All Rights Reserved.
+          </span>
+        </div>
+
+        <!-- FOOTER NAVIGATION -->
+        <div class="footer-links">
+          <h3>NAVIGASI</h3>
+
+          <a href="dashboard.html"> Beranda </a>
+
+          <a href="pelayanan.html"> Unit Pelayanan Kesehatan </a>
+
+          <a href="darurat.html"> Unit Layanan Darurat </a>
+
+          <a href="antrean.html"> Antrean Puskesmas </a>
+
+          <a href="profil.html"> Profil </a>
+
+          <a href="contact.html"> Kontak </a>
+        </div>
+
+        <!-- SOCIAL MEDIA -->
+        <div class="footer-social">
+          <h3>SOSIAL MEDIA KAMI</h3>
+
+          <div class="social-icons">
+            <!-- X -->
+            <a href="#" aria-label="X">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M18.9 3H21L14.5 10.4L22.2 21H16.2L11.5 14.7L5.9 21H3.8L10.8 13.1L3.4 3H9.5L13.7 8.8L18.9 3Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+
+            <!-- INSTAGRAM -->
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect
+                  x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+              </svg>
+            </a>
+
+            <!-- YOUTUBE -->
+            <a href="#" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M21 7.5C20.8 6.5 20 5.7 19 5.5C17.2 5 12 5 12 5S6.8 5 5 5.5C4 5.7 3.2 6.5 3 7.5C2.5 9.1 2.5 12 2.5 12S2.5 14.9 3 16.5C3.2 17.5 4 18.3 5 18.5C6.8 19 12 19 12 19S17.2 19 19 18.5C20 18.3 20.8 17.5 21 16.5C21.5 14.9 21.5 12 21.5 12S21.5 9.1 21 7.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+
+                <path d="M10 9L15 12L10 15V9Z" fill="currentColor" />
+              </svg>
+            </a>
+
+            <!-- FACEBOOK -->
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M14 21V13H17L17.5 10H14V8C14 7 14.5 6.5 15.5 6.5H17.5V3.5H14.5C11.5 3.5 10 5.2 10 8V10H7V13H10V21H14Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/auth-ui.js"></script>
+    <script src="../js/role-router.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

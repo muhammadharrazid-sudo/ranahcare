@@ -1,0 +1,103 @@
+/* =================================
+   RANAHCARE - GLOBAL CSS
+================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --primary: #087f62;
+  --primary-light: #13b58b;
+  --primary-dark: #075c49;
+
+  --mint: #e8f8f1;
+  --background: #f5faf8;
+
+  --text-dark: #123e35;
+  --text-muted: #78918a;
+
+  --white: #ffffff;
+
+  --shadow: 0 20px 60px rgba(16, 100, 75, 0.1);
+}
+
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--text-dark);
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(19, 181, 139, 0.13),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(93, 211, 177, 0.15),
+      transparent 35%
+    ),
+    var(--background);
+
+  overflow-x: hidden;
+}
+
+/* ELEMENT RESET */
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* SELECTION */
+
+::selection {
+  background: #13b58b;
+  color: white;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f7f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9bdcc7;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}

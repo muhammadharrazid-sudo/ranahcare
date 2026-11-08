@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fafdfb" />
+
+    <meta
+      name="description"
+      content="Login Dokter, Pasien, dan Admin RANAHCARE Digital Healthcare"
+    />
+
+    <title>Login | RANAHCARE</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../pages/css/profil.css" />
+  </head>
+
+  <body>
+    <main class="register-page">
+      <!-- LEFT INFORMATION -->
+      <section class="register-intro">
+        <a href="dashboard.html" class="logo">
+          <img src="../assets/1.png" alt="Logo RANAHCARE" />
+          <div>
+            <strong>RANAH<span>CARE</span></strong>
+            <small>Digital Healthcare</small>
+          </div>
+        </a>
+
+        <div class="intro-content">
+          <div class="intro-badge">
+            <span class="badge-dot"></span>
+            SECURE ACCESS PORTAL
+          </div>
+
+          <h1>
+            Masuk Sebagai
+            <span>Dokter, Pasien,</span>
+            atau <span>Admin</span>.
+          </h1>
+
+          <p>
+            Satu pintu masuk untuk seluruh pengguna RANAHCARE. Pilih jenis akun
+            Anda dan akses layanan kesehatan digital dengan aman dan mudah.
+          </p>
+
+          <div class="intro-features">
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <div>
+                <strong>Pasien</strong>
+                <small>Akses reservasi, antrean puskesmas, dan riwayat layanan.</small>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <div>
+                <strong>Dokter</strong>
+                <small>Kelola jadwal pemeriksaan dan pelayanan pasien.</small>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <div>
+                <strong>Admin</strong>
+                <small>Atur antrean puskesmas dan data layanan.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="intro-footer">© 2026 RANAHCARE. All rights reserved.</div>
+      </section>
+
+      <!-- RIGHT LOGIN FORM -->
+      <section class="register-section">
+        <div class="register-card">
+          <div class="form-heading">
+            <div class="heading-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                />
+
+                <path
+                  d="M9 11.5L11.5 14L15.5 9.5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <span class="form-eyebrow">ACCOUNT LOGIN</span>
+
+            <h2>Masuk ke Akun Anda</h2>
+
+            <p>Pilih jenis akun, lalu masukkan email/username dan password.</p>
+          </div>
+
+          <form id="roleLoginForm" novalidate>
+            <!-- ROLE SELECTOR -->
+            <div class="form-group">
+              <label>Masuk Sebagai</label>
+
+              <div
+                class="role-selector"
+                role="group"
+                aria-label="Pilih jenis akun"
+              >
+                <button
+                  type="button"
+                  class="role-option active"
+                  data-role="pasien"
+                  aria-pressed="true"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle
+                      cx="12"
+                      cy="8"
+                      r="4"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                    />
+
+                    <path
+                      d="M4 21V19C4 17.3 5.3 16 7 16H17C18.7 16 20 17.3 20 19V21"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+
+                  <span>Pasien</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="role-option"
+                  data-role="dokter"
+                  aria-pressed="false"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M6 3V9C6 11.2 7.8 13 10 13C12.2 13 14 11.2 14 9V3"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                    />
+
+                    <path
+                      d="M4 3H8M12 3H16"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                    />
+
+                    <path
+                      d="M10 13V15C10 18.3 12.7 21 16 21C18.8 21 21 18.8 21 16V14"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                    />
+
+                    <circle
+                      cx="21"
+                      cy="12"
+                      r="2"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                    />
+                  </svg>
+
+                  <span>Dokter</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="role-option"
+                  data-role="admin"
+                  aria-pressed="false"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linejoin="round"
+                    />
+
+                    <path
+                      d="M9 11.5L11.5 14L15.5 9.5"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+
+                  <span>Admin</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- EMAIL / USERNAME -->
+            <div class="form-group">
+              <label for="loginIdentity">Email atau Username</label>
+
+              <div class="input-wrapper">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="3"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+
+                  <path
+                    d="M4 7L12 13L20 7"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+                <input
+                  type="text"
+                  id="loginIdentity"
+                  placeholder="nama@email.com atau username"
+                  autocomplete="username"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+
+              <div class="input-wrapper">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="4"
+                    y="10"
+                    width="16"
+                    height="11"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+
+                  <path
+                    d="M8 10V7C8 4.8 9.8 3 12 3C14.2 3 16 4.8 16 7V10"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  />
+                </svg>
+
+                <input
+                  type="password"
+                  id="loginPassword"
+                  placeholder="Masukkan password"
+                  autocomplete="current-password"
+                  required
+                />
+
+                <button
+                  type="button"
+                  class="toggle-password"
+                  data-target="loginPassword"
+                  aria-label="Tampilkan password"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M2 12C3.8 8 7.5 6 12 6C16.5 6 20.2 8 22 12C20.2 16 16.5 18 12 18C7.5 18 3.8 16 2 12Z"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linejoin="round"
+                    />
+
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="3"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- OPTIONS -->
+            <div class="login-options">
+              <label class="remember">
+                <input type="checkbox" id="rememberMe" />
+                <span>Ingat saya</span>
+              </label>
+
+              <a href="contact.html" class="forgot-link">Lupa password?</a>
+            </div>
+
+            <!-- MESSAGE -->
+            <div class="form-message" id="formMessage" role="status"></div>
+
+            <!-- SUBMIT -->
+            <button type="submit" class="register-button" id="loginButton">
+              <span id="loginButtonText">Masuk sebagai Pasien</span>
+
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12H19M12 5L19 12L12 19"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </form>
+
+          <div class="form-divider">
+            <span>ATAU</span>
+          </div>
+
+          <div class="login-link">
+            Belum memiliki akun?
+            <a href="daftar.html">Daftar sekarang</a>
+          </div>
+
+          <div class="demo-accounts">
+            <strong>Akun demo</strong>
+
+            <ul>
+              <li>
+                <span class="demo-role role-pasien">Pasien</span>
+                <code>pasien@ranahcare.id</code>
+                <code>pasien123</code>
+              </li>
+
+              <li>
+                <span class="demo-role role-dokter">Dokter</span>
+                <code>dokter@ranahcare.id</code>
+                <code>dokter123</code>
+              </li>
+
+              <li>
+                <span class="demo-role role-admin">Admin</span>
+                <code>admin@ranahcare.id</code>
+                <code>admin123</code>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/profil.js"></script>
+  </body>
+</html>

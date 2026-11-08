@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Resepsionis Digital RANAHCARE" />
+
+    <title>Resepsionis | RANAHCARE</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../pages/css/resepsionis.css" />
+  </head>
+
+  <body>
+    <!-- ================= AMBIENT BACKGROUND ================= -->
+
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+      <span class="ambient-grid"></span>
+    </div>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+      <div class="navbar-container">
+        <a href="dashboard.html" class="brand">
+          <img src="../assets/1.png" alt="Logo RANAHCARE" />
+
+          <span>RANAH CARE</span>
+        </a>
+
+        <nav class="nav-menu">
+          <a href="dashboard.html" class="nav-link"> Dashboard </a>
+
+          <a href="resepsionis.html" class="nav-link active"> Resepsionis </a>
+
+          <a href="diagnosis.html" class="nav-link"> Triase Awal </a>
+
+          <a href="reservasi.html" class="nav-link"> Reservasi </a>
+        </nav>
+
+        <button class="mobile-menu" id="mobileMenu" aria-label="Buka menu">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-container">
+      <!-- PAGE HEADING -->
+
+      <section class="page-heading">
+        <span class="heading-label">
+          <i></i>
+          RANAHCARE DIGITAL SERVICE
+        </span>
+
+        <h1>RESEPSIONIS <span>AI</span></h1>
+
+        <p>
+          Selamat datang di layanan resepsionis digital RANAHCARE. Sampaikan
+          kebutuhan dan pertanyaan Anda, asisten AI kami siap membantu.
+        </p>
+
+        <a href="dashboard.html" class="back-link"> ← Kembali ke dashboard </a>
+      </section>
+
+      <!-- ================= CHAT SHELL ================= -->
+
+      <section class="chat-shell">
+        <div class="chat-glow" aria-hidden="true"></div>
+
+        <div class="chat-card">
+          <!-- CHAT HEADER -->
+
+          <div class="chat-header">
+            <div class="receptionist-profile">
+              <div class="bot-avatar">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="7" width="18" height="14" rx="4" />
+                  <path d="M12 3v4" />
+                  <circle cx="9" cy="13" r="1" />
+                  <circle cx="15" cy="13" r="1" />
+                  <path d="M9 17h6" />
+                </svg>
+
+                <span class="avatar-ring"></span>
+              </div>
+
+              <div class="bot-information">
+                <h2>
+                  Asisten RANAHCARE
+                  <span class="ai-badge">AI</span>
+                </h2>
+
+                <span class="online-status">
+                  <i></i>
+                  Prototipe · Menunggu API
+                </span>
+              </div>
+            </div>
+
+            <div class="chat-status" id="chatStatus">
+              <span class="status-dot"></span>
+              <span id="chatStatusText">Aktif</span>
+            </div>
+          </div>
+
+          <!-- CHAT BODY -->
+
+          <div class="chat-body" id="chatBody" aria-live="polite">
+            <!-- WELCOME MESSAGE -->
+
+            <div class="chat-date">
+              <span>HARI INI</span>
+            </div>
+
+            <div class="message-row bot-message">
+              <div class="message-avatar">RC</div>
+
+              <div class="message-content">
+                <div class="message-bubble">
+                  <p>
+                    Assalamualaikum, ado nan bisa wak bantu? Saya resepsionis
+                    digital RANAHCARE. Wak bisa tanyo jadwal, ceritokan
+                    keluhan, atau minta bantuan reservasi.
+                  </p>
+
+                  <p>Triase awal bukan diagnosis dan perlu divalidasi tenaga medis.</p>
+                </div>
+
+                <span class="message-time">Baru saja</span>
+              </div>
+            </div>
+
+            <!-- QUICK QUESTIONS -->
+
+            <div class="quick-question-wrapper">
+              <span class="quick-label"> PERTANYAAN CEPAT </span>
+
+              <div class="quick-questions">
+                <button
+                  class="quick-btn"
+                  data-message="Informasi layanan kesehatan"
+                >
+                  Informasi layanan
+                </button>
+
+                <button
+                  class="quick-btn"
+                  data-message="Bagaimana cara membuat reservasi?"
+                >
+                  Cara reservasi
+                </button>
+
+                <button
+                  class="quick-btn"
+                  data-message="Bagaimana cara melakukan triase awal?"
+                >
+                  Triase awal
+                </button>
+
+                <button
+                  class="quick-btn"
+                  data-message="Di mana lokasi fasilitas kesehatan?"
+                >
+                  Lokasi fasilitas
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAT INPUT -->
+
+          <form class="chat-input-area" id="chatForm">
+            <div class="input-wrapper">
+              <span class="input-spark" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9Z" />
+                  <path d="M18.5 16.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8Z" />
+                </svg>
+              </span>
+
+              <textarea
+                id="messageInput"
+                rows="1"
+                placeholder="Tanya apa saja ke asisten AI..."
+                autocomplete="off"
+                aria-label="Pesan untuk resepsionis"
+              ></textarea>
+
+              <button
+                type="button"
+                class="voice-button"
+                id="voiceInput"
+                aria-label="Gunakan input suara Bahasa Indonesia"
+                title="Gunakan input suara"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="9" y="2" width="6" height="12" rx="3" />
+                  <path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8" />
+                </svg>
+              </button>
+
+              <button
+                type="submit"
+                class="send-button"
+                aria-label="Kirim pesan"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m22 2-7 20-4-9-9-4Z" />
+                  <path d="M22 2 11 13" />
+                </svg>
+              </button>
+            </div>
+
+            <p class="input-disclaimer">
+              <label class="ai-consent" for="aiConsent">
+                <input type="checkbox" id="aiConsent" />
+                <span>
+                  Saya setuju pesan umum diproses Groq/Google AI. Keluhan triase
+                  diproses lokal; jangan masukkan NIK atau data identitas.
+                </span>
+              </label>
+              Resepsionis bukan pengganti konsultasi tenaga medis. Jika ada
+              keadaan darurat, segera cari pertolongan langsung. Input suara
+              memakai fitur browser Bahasa Indonesia dan bisa diproses oleh
+              penyedia browser; kemampuan mengenali Minang bergantung browser.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <!-- ================= INFORMATION CARDS ================= -->
+
+      <section class="information-sidebar">
+        <!-- SERVICE CARD -->
+
+        <div class="information-card service-card">
+          <div class="card-heading">
+            <div class="card-icon green-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <path d="M12 3v18M3 12h18" />
+              </svg>
+            </div>
+
+            <h3>LAYANAN RANAHCARE</h3>
+          </div>
+
+          <p>
+            Temukan layanan yang tersedia untuk membantu kebutuhan kesehatan
+            Anda.
+          </p>
+
+          <div class="service-list">
+            <a href="diagnosis.html" class="service-item">
+              <span class="service-item-icon">01</span>
+
+              <span>
+                <strong>Triase Awal</strong>
+                <small>Arahan awal, bukan diagnosis</small>
+              </span>
+
+              <span class="service-arrow">→</span>
+            </a>
+
+            <a href="reservasi.html" class="service-item">
+              <span class="service-item-icon">02</span>
+
+              <span>
+                <strong>Reservasi</strong>
+                <small>Pemesanan jadwal layanan</small>
+              </span>
+
+              <span class="service-arrow">→</span>
+            </a>
+
+            <a href="pelayanan.html" class="service-item">
+              <span class="service-item-icon">03</span>
+
+              <span>
+                <strong>Unit Pelayanan</strong>
+                <small>Informasi unit kesehatan</small>
+              </span>
+
+              <span class="service-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- OPERATIONAL CARD -->
+
+        <div class="information-card operational-card">
+          <div class="card-heading">
+            <div class="card-icon blue-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>
+            </div>
+
+            <h3>INFORMASI LAYANAN</h3>
+          </div>
+
+          <div class="operational-information">
+            <div class="operational-item">
+              <span>Status sistem</span>
+
+              <strong class="system-active">
+                <i></i>
+                Online
+              </strong>
+            </div>
+
+            <div class="operational-item">
+              <span>Layanan digital</span>
+
+              <strong>24 Jam</strong>
+            </div>
+
+            <div class="operational-item">
+              <span>Jenis layanan</span>
+
+              <strong>Informasi &amp; Bantuan</strong>
+            </div>
+          </div>
+
+          <p class="operational-note">
+            Jam operasional fasilitas kesehatan dapat berbeda sesuai ketentuan
+            masing-masing fasilitas.
+          </p>
+        </div>
+
+        <!-- HELP CARD -->
+
+        <div class="help-card">
+          <div class="help-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M9.5 9a2.5 2.5 0 1 1 4.2 1.8c-1.1 1-1.7 1.4-1.7 3.2" />
+              <path d="M12 17h.01" />
+            </svg>
+          </div>
+
+          <div>
+            <h3>Butuh bantuan lebih lanjut?</h3>
+
+            <p>
+              Hubungi petugas fasilitas kesehatan untuk mendapatkan bantuan
+              langsung.
+            </p>
+          </div>
+
+          <a href="contact.html"> Hubungi kami → </a>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+
+      <footer class="page-footer">
+        <p>© 2026 <strong>RANAHCARE</strong>. Digital Healthcare Platform.</p>
+
+        <span>Care With Technology</span>
+      </footer>
+    </main>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="../js/config.js"></script>
+    <script src="../js/resepsionis.js"></script>
+  </body>
+</html>

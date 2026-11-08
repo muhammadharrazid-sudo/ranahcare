@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="RANAHCARE - Pantau jumlah pasien yang sedang menunggu di puskesmas secara realtime"
+    />
+
+    <title>Antrean Puskesmas | RANAHCARE</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS ANTREAN -->
+    <link rel="stylesheet" href="../pages/css/antrean.css" />
+    <link rel="stylesheet" href="../css/auth-ui.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="navbar-left">
+        <a
+          href="dashboard.html"
+          class="back-button"
+          aria-label="Kembali ke dashboard"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M19 12H5M12 19L5 12L12 5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+
+      <nav class="nav-menu" aria-label="Navigasi utama">
+        <a href="dashboard.html">Beranda</a>
+        <a href="pelayanan.html">Pelayanan</a>
+        <a href="darurat.html">Darurat</a>
+        <a href="antrean.html" class="active">Antrean</a>
+      </nav>
+
+      <!-- PROFILE -->
+      <div class="profile-wrapper">
+        <button
+          class="profile-button"
+          type="button"
+          aria-expanded="false"
+          aria-label="Buka menu profil"
+        >
+          <div class="profile-avatar">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle
+                cx="12"
+                cy="8"
+                r="4"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+              <path
+                d="M4 21C4 17.686 7.582 15 12 15C16.418 15 20 17.686 20 21"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+
+          <div class="profile-info">
+            <strong>Pengguna</strong>
+            <span>Member RANAHCARE</span>
+          </div>
+
+          <svg
+            class="dropdown-arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M7 10L12 15L17 10"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <div class="profile-dropdown">
+          <a href="profil.html">Profil Saya</a>
+          <a href="contact.html">Hubungi Kami</a>
+
+          <div class="dropdown-divider"></div>
+
+          <a href="index.html" class="logout-link" data-logout>Keluar</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="app-container">
+      <div class="main-content">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="sidebar-title">MENU UTAMA</div>
+
+          <nav class="sidebar-menu" aria-label="Menu halaman">
+            <a href="dashboard.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 10.5L12 3L21 10.5V20H14V14H10V20H3V10.5Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Beranda</span>
+            </a>
+
+            <a href="pelayanan.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect
+                    x="3"
+                    y="4"
+                    width="18"
+                    height="16"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M12 8V16M8 12H16"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Pelayanan Kesehatan</span>
+            </a>
+
+            <a href="darurat.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 7V13M12 16H12.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Layanan Darurat</span>
+            </a>
+
+            <a href="resepsionis.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M12 8V16M8 12H16"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Resepsionis AI</span>
+            </a>
+
+            <a href="riwayat.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 12A9 9 0 1 0 6 5.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M3 4V9H8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 7V12L15 14"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Riwayat</span>
+            </a>
+
+            <a href="antrean.html" class="sidebar-item active">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle
+                    cx="12"
+                    cy="8"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M4 21V19C4 17.3431 5.34315 16 7 16H17C18.6569 16 20 17.3431 20 19V21"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Antrean Puskesmas</span>
+            </a>
+
+            <a href="contact.html" class="sidebar-item">
+              <span class="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M4 5H20V17H8L4 21V5Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <span>Hubungi Kami</span>
+            </a>
+          </nav>
+
+          <!-- SIDEBAR HELP -->
+          <div class="sidebar-bottom">
+            <div class="help-box">
+              <div class="help-icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+
+                  <path
+                    d="M9.5 9A2.5 2.5 0 1 1 13.5 11C12.5 11.7 12 12.2 12 13.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M12 17H12.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+
+              <strong>Butuh Bantuan?</strong>
+
+              <p>Hubungi tim RANAHCARE untuk informasi lebih lanjut.</p>
+
+              <a href="contact.html">Hubungi Kami</a>
+            </div>
+
+            <div class="sidebar-footer">© 2026 RANAHCARE</div>
+          </div>
+        </aside>
+
+        <!-- CONTENT -->
+        <section class="content">
+          <!-- PAGE HEADING -->
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                ANTREAN REALTIME
+              </div>
+
+              <h1>Antrean Puskesmas</h1>
+
+              <p>
+                Pantau jumlah pasien yang sedang menunggu di puskesmas terdekat
+                secara langsung.
+              </p>
+            </div>
+
+            <div class="heading-actions">
+              <span class="live-badge" id="liveBadge">
+                <span class="live-dot"></span>
+                LIVE
+              </span>
+            </div>
+          </div>
+
+          <!-- PUSKESMAS TABS -->
+          <section class="tabs-section">
+            <div class="section-heading">
+              <div>
+                <h2>Pilih Puskesmas</h2>
+                <p>Klik salah satu puskesmas untuk melihat detail antrean.</p>
+              </div>
+
+              <span class="result-count" id="puskesmasCount">—</span>
+            </div>
+
+            <div
+              class="antrean-tabs"
+              id="antreanTabs"
+              role="tablist"
+              aria-label="Pilih puskesmas"
+            ></div>
+          </section>
+
+          <!-- LIVE FEATURE -->
+          <section class="antrean-live">
+            <!-- FEATURED CARD -->
+            <article class="featured-card" id="featuredCard">
+              <div class="featured-glow" aria-hidden="true"></div>
+
+              <div class="featured-top">
+                <div class="featured-identity">
+                  <div class="featured-icon">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 10.5L12 3L21 10.5V20H14V14H10V20H3V10.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12 8V12M10 10H14"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div>
+                    <span class="featured-label">PUSKESMAS TERPILIH</span>
+                    <h2 id="featuredNama">Memuat data…</h2>
+                    <p id="featuredAlamat">—</p>
+                  </div>
+                </div>
+
+                <span class="status-pill open" id="featuredStatus">Buka</span>
+              </div>
+
+              <div class="featured-body">
+                <div class="count-block">
+                  <span class="count-label">Sedang menunggu</span>
+
+                  <div class="count-line">
+                    <strong class="count-value" id="featuredCount">0</strong>
+                    <span class="count-unit">pasien</span>
+                  </div>
+
+                  <p class="count-note" id="featuredNote">
+                    Data antrean akan tampil di sini.
+                  </p>
+                </div>
+
+                <div class="ring-block">
+                  <svg
+                    class="queue-ring"
+                    viewBox="0 0 120 120"
+                    aria-hidden="true"
+                  >
+                    <circle class="ring-track" cx="60" cy="60" r="52" />
+                    <circle
+                      class="ring-progress"
+                      id="featuredRing"
+                      cx="60"
+                      cy="60"
+                      r="52"
+                    />
+                  </svg>
+
+                  <div class="ring-center">
+                    <strong id="featuredRingValue">0%</strong>
+                    <span>kapasitas</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="featured-stats">
+                <div class="featured-stat">
+                  <span>Estimasi tunggu</span>
+                  <strong id="featuredWait">—</strong>
+                </div>
+
+                <div class="featured-stat">
+                  <span>Loket aktif</span>
+                  <strong id="featuredLoket">—</strong>
+                </div>
+
+                <div class="featured-stat">
+                  <span>Sedang dilayani</span>
+                  <strong id="featuredDilayani">—</strong>
+                </div>
+
+                <div class="featured-stat">
+                  <span>Selesai hari ini</span>
+                  <strong id="featuredSelesai">—</strong>
+                </div>
+              </div>
+
+              <div class="featured-footer">
+                <span class="updated-at">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                    <path
+                      d="M12 7V12L15 14"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  Diperbarui <strong id="featuredUpdated">—</strong>
+                </span>
+
+                <a href="antrean.html" class="featured-action">
+                  Perbarui data
+                </a>
+              </div>
+            </article>
+
+            <!-- TREND CARD -->
+            <aside class="trend-card">
+              <div class="trend-head">
+                <div>
+                  <h3>Tren Antrean</h3>
+                  <p>16 pembaruan terakhir</p>
+                </div>
+
+                <span class="trend-peak" id="trendPeak">—</span>
+              </div>
+
+              <div class="trend-chart" id="trendBars"></div>
+
+              <div class="trend-summary">
+                <div>
+                  <span>Rata-rata</span>
+                  <strong id="trendAverage">0</strong>
+                </div>
+
+                <div>
+                  <span>Puncak</span>
+                  <strong id="trendMax">0</strong>
+                </div>
+              </div>
+
+              <div class="trend-info">
+                <div class="trend-info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                    <path
+                      d="M12 11V16M12 8H12.01"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+
+                <p>
+                  Data diperbarui otomatis setiap kali petugas puskesmas
+                  menyimpan perubahan terbaru.
+                </p>
+              </div>
+            </aside>
+          </section>
+
+          <!-- ALL PUSKESMAS -->
+          <section class="antrean-section">
+            <div class="section-heading">
+              <div>
+                <h2>Semua Puskesmas</h2>
+                <p>Ringkasan antrean seluruh puskesmas yang terdaftar.</p>
+              </div>
+
+              <span class="result-count" id="totalMenunggu">—</span>
+            </div>
+
+            <div class="puskesmas-grid" id="puskesmasGrid"></div>
+          </section>
+
+          <!-- INFORMATION -->
+          <section class="safety-information">
+            <div class="safety-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M12 11V16M12 8H12.01"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+
+            <div>
+              <h3>Informasi Antrean</h3>
+
+              <p>
+                Jumlah antrean diperbarui oleh petugas puskesmas melalui panel
+                admin. Estimasi waktu tunggu dihitung dari jumlah pasien yang
+                menunggu, jumlah loket aktif, dan rata-rata durasi layanan.
+                Angka bersifat perkiraan dan dapat berubah sewaktu-waktu.
+              </p>
+            </div>
+          </section>
+
+          <!-- FOOTER -->
+          <footer class="page-footer">
+            <p>
+              © 2026 <strong>RANAHCARE</strong>. Digital Healthcare Platform.
+            </p>
+
+            <span>Melayani dengan kepedulian.</span>
+          </footer>
+        </section>
+      </div>
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/auth-ui.js"></script>
+    <script src="../js/antrean-store.js"></script>
+    <script src="../js/antrean.js"></script>
+  </body>
+</html>
